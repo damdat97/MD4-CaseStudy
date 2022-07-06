@@ -12,7 +12,8 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    private String name;
+    private String phone;
     @Column(unique = true, nullable = false)
     private String username;
 
@@ -30,7 +31,9 @@ public class User implements Serializable {
     private Set<Role> roles;
 
 
-    public User(String username, String password, String confirmPassword, Set<Role> roles) {
+    public User(String name, String phone, String username, String password, String confirmPassword, Set<Role> roles) {
+        this.name = name;
+        this.phone = phone;
         this.username = username;
         this.password = password;
         this.confirmPassword = confirmPassword;
@@ -50,6 +53,22 @@ public class User implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getUsername() {
