@@ -35,5 +35,4 @@ public class BillDetailController {
         billService.save(bill);
         return new ResponseEntity<>(billDetail, HttpStatus.CREATED);
     }
-    @
 }

@@ -7,6 +7,8 @@ import thuongmaidientu.model.Bill;
 import thuongmaidientu.service.BillService;
 import thuongmaidientu.service.impl.BillServiceImpl;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 @RestController
@@ -23,6 +25,10 @@ public class BillController {
 
     @PostMapping
     public ResponseEntity<Bill> create(@RequestBody Bill bill) {
+        LocalDateTime time = LocalDateTime.now();
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String timePost = time.format(fmt);
+        bill.setCreate_date(timePost);
         billService.save(bill);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -45,4 +51,5 @@ public class BillController {
     public ResponseEntity<Optional<Bill>> search(@PathVariable Long id) {
         return new ResponseEntity<>(billService.findById(id),HttpStatus.OK);
     }
+
 }
