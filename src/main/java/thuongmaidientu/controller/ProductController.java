@@ -39,4 +39,9 @@ public class ProductController {
     public ResponseEntity<Optional<Product>> search(@PathVariable Long id) {
         return new ResponseEntity<>(productService.findById(id),HttpStatus.OK);
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Product> delete(@PathVariable Long id) {
+        productService.remove(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
