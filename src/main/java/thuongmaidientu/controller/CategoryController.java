@@ -17,6 +17,7 @@ public class CategoryController {
     @GetMapping
     public ResponseEntity<Iterable<Category>> findAll() {
         return new ResponseEntity<>(categoryService.findAll(), HttpStatus.OK);
+
     }
 //    @PostMapping
 //    public ResponseEntity<Category> create()
