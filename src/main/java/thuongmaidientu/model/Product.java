@@ -11,11 +11,8 @@ public class Product {
     private String name;
     private String description;
     private int price;
-
-
-
+    private int quantity;
     private String img;
-    private boolean status;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -61,14 +58,6 @@ public class Product {
 
     public void setImg(String img) {
         this.img = img;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
     }
 
     public Category getCategory() {
