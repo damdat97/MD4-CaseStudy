@@ -12,6 +12,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import thuongmaidientu.model.JwtResponse;
 import thuongmaidientu.model.Role;
@@ -20,9 +22,8 @@ import thuongmaidientu.service.RoleService;
 import thuongmaidientu.service.UserService;
 import thuongmaidientu.service.impl.JwtService;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import javax.validation.Valid;
+import java.util.*;
 
 @RestController
 @PropertySource("classpath:application.properties")
@@ -129,4 +130,17 @@ public class UserController {
         userService.save(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
+
+//    @ResponseStatus(HttpStatus.BAD_REQUEST)
+//    @ExceptionHandler(MethodArgumentNotValidException.class)
+//    public Map<String, String> handleValidationExceptions(
+//            MethodArgumentNotValidException ex) {
+//        Map<String, String> errors = new HashMap<>();
+//        ex.getBindingResult().getAllErrors().forEach((error) -> {
+//            String fieldName = ((FieldError) error).getField();
+//            String errorMessage = error.getDefaultMessage();
+//            errors.put(fieldName, errorMessage);
+//        });
+//        return errors;
+//    }
 }
