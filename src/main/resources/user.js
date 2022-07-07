@@ -119,5 +119,6 @@ function login() {
 
 function showUserRole() {
     home.innerHTML = `<button onclick="listProduct()">List Product</button>
-    <button onclick="showAddProductForm()">Add Product</button>`
+    <button onclick="showAddProductForm()">Add Product</button>
+    <button onclick="showShoppingCart()">Cart</button>`
 }

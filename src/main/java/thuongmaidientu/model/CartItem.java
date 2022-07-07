@@ -3,23 +3,22 @@ package thuongmaidientu.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "bill_detail")
-public class BillDetail {
+@Table(name = "cart_item")
+public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int quantity;
-    private int price;
-
-    @ManyToOne
-    @JoinColumn(name = "bill_id")
-    private Bill bill;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
 
-    public BillDetail() {
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public CartItem() {
     }
 
     public Long getId() {
@@ -38,27 +37,19 @@ public class BillDetail {
         this.quantity = quantity;
     }
 
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public Bill getBill() {
-        return bill;
-    }
-
-    public void setBill(Bill bill) {
-        this.bill = bill;
-    }
-
     public Product getProduct() {
         return product;
     }
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

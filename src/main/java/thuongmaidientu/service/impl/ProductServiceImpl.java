@@ -31,4 +31,9 @@ public class ProductServiceImpl implements ProductService {
     public void remove(Long id) {
         productRepository.deleteById(id);
     }
+
+    @Override
+    public Iterable<Product> findByUserId(Long id) {
+        return productRepository.findByUserId(id);
+    }
 }

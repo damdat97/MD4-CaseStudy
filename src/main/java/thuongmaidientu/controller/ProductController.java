@@ -36,7 +36,7 @@ public class ProductController {
         return new ResponseEntity<>(product,HttpStatus.OK);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Product>> search(@PathVariable Long id) {
+    public ResponseEntity<Optional<Product>> showUserShop(@PathVariable Long id) {
         return new ResponseEntity<>(productService.findById(id),HttpStatus.OK);
     }
     @DeleteMapping("/{id}")

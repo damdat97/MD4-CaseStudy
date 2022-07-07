@@ -18,6 +18,7 @@ function listProduct() {
                 
                 <button onclick="showEditForm(${data[i].id})">Edit</button>
                 <button onclick="deleteProduct(${data[i].id})">Delete</button>
+                <button onclick="AddToCart(${data[i].id})">Add To Cart</button>
                 <br>`
             }
             display.innerHTML = str;
