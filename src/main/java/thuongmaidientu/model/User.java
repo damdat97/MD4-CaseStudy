@@ -14,6 +14,8 @@ public class User implements Serializable {
     private Long id;
     private String name;
     private String phone;
+    private String email;
+    private boolean status;
     @Column(unique = true, nullable = false)
     private String username;
 
@@ -111,4 +113,19 @@ public class User implements Serializable {
         this.enabled = enabled;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
 }

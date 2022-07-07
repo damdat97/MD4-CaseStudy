@@ -117,4 +117,19 @@ public class UserServiceImpl implements UserService {
         }
         return isCorrentConfirmPassword;
     }
+
+    @Override
+    public void remove(Long id) {
+        userRepository.deleteById(id);
+    }
+
+    @Override
+    public Iterable<User> findByName(String name) {
+        return userRepository.findByName(name);
+    }
+
+    @Override
+    public Optional<User> lockedUser(Long id) {
+        return userRepository.lockedUser(id);
+    }
 }

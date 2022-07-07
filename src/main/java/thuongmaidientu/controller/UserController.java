@@ -16,11 +16,13 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import thuongmaidientu.model.JwtResponse;
+import thuongmaidientu.model.Product;
 import thuongmaidientu.model.Role;
 import thuongmaidientu.model.User;
 import thuongmaidientu.service.RoleService;
 import thuongmaidientu.service.UserService;
 import thuongmaidientu.service.impl.JwtService;
+import thuongmaidientu.service.impl.UserServiceImpl;
 
 import javax.validation.Valid;
 import java.util.*;
@@ -40,7 +42,7 @@ public class UserController {
     private JwtService jwtService;
 
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
 
     @Autowired
     private RoleService roleService;
@@ -54,6 +56,7 @@ public class UserController {
         Iterable<User> users = userService.findAll();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
+
     @GetMapping("/admin/users")
     public ResponseEntity<Iterable<User>> showAllUserByAdmin() {
         Iterable<User> users = userService.findAll();
@@ -90,6 +93,7 @@ public class UserController {
         userService.save(user);
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
+
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody User user) {
         Authentication authentication = authenticationManager.authenticate(
@@ -101,11 +105,6 @@ public class UserController {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         User currentUser = userService.findByUsername(user.getUsername());
         return ResponseEntity.ok(new JwtResponse(jwt, currentUser.getId(), userDetails.getUsername(), userDetails.getAuthorities()));
-    }
-
-    @GetMapping("/hello")
-    public ResponseEntity<String> hello(){
-        return new ResponseEntity("Hello World", HttpStatus.OK);
     }
 
     @GetMapping("/users/{id}")
@@ -131,16 +130,20 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-//    @ResponseStatus(HttpStatus.BAD_REQUEST)
-//    @ExceptionHandler(MethodArgumentNotValidException.class)
-//    public Map<String, String> handleValidationExceptions(
-//            MethodArgumentNotValidException ex) {
-//        Map<String, String> errors = new HashMap<>();
-//        ex.getBindingResult().getAllErrors().forEach((error) -> {
-//            String fieldName = ((FieldError) error).getField();
-//            String errorMessage = error.getDefaultMessage();
-//            errors.put(fieldName, errorMessage);
-//        });
-//        return errors;
-//    }
+    @DeleteMapping("/admin/users/{id}")
+    public ResponseEntity<Product> delete(@PathVariable Long id) {
+        userService.remove(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/admin/users/find-by-name")
+    public ResponseEntity<Iterable<User>> findByName(@RequestParam(value = "name") String name) {
+        return new ResponseEntity<>(userService.findByName(name), HttpStatus.OK);
+    }
+
+    @GetMapping("/admin/users/locked-user/{id}")
+    public ResponseEntity<User> lockedUser(@PathVariable Long id) {
+        Optional<User> userOptional = this.userService.lockedUser(id);
+        return userOptional.map(user -> new ResponseEntity<>(user, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
 }
