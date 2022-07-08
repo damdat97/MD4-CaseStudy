@@ -1,3 +1,4 @@
+
 let str = document.getElementById("content")
 
 let home = document.getElementById("home");
@@ -11,7 +12,7 @@ function showRegisterForm() {
                         <h3>Register</h3>
                     </div>
                     <div class="card-body">
-                       
+                  
                             <div>
                                 <label >Username</label>
                                 <input type="text" class="form-control" id="usernameRegister" placeholder="Enter username">
@@ -43,10 +44,12 @@ function register() {
     let username = document.getElementById("usernameRegister").value;
     let password = document.getElementById("passwordRegister").value;
     let confirmPassword = document.getElementById("confirmPassword").value;
+
     let user = {
         username: username,
         password: password,
-        confirmPassword: confirmPassword
+        confirmPassword: confirmPassword,
+
     }
     $.ajax({
         headers: {
@@ -100,7 +103,6 @@ function login() {
         username: username,
         password: password
     }
-
     $.ajax({
         headers: {
             'Accept': 'application/json',

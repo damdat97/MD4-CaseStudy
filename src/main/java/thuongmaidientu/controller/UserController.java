@@ -22,6 +22,7 @@ import thuongmaidientu.model.User;
 import thuongmaidientu.service.RoleService;
 import thuongmaidientu.service.UserService;
 import thuongmaidientu.service.impl.JwtService;
+import thuongmaidientu.service.impl.RoleServiceImpl;
 import thuongmaidientu.service.impl.UserServiceImpl;
 
 import javax.validation.Valid;
@@ -60,6 +61,12 @@ public class UserController {
     @GetMapping("/admin/users")
     public ResponseEntity<Iterable<User>> showAllUserByAdmin() {
         Iterable<User> users = userService.findAll();
+        return new ResponseEntity<>(users, HttpStatus.OK);
+    }
+
+    @GetMapping("/admin/users/{id}")
+    public ResponseEntity<Optional<User>> findById(@PathVariable Long id) {
+        Optional<User> users = userService.findById(id);
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
@@ -131,12 +138,6 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @DeleteMapping("/admin/users/{id}")
-    public ResponseEntity<Product> delete(@PathVariable Long id) {
-        userService.remove(id);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
     @GetMapping("/admin/users/find-by-name")
     public ResponseEntity<Iterable<User>> findByName(@RequestParam(value = "name") String name) {
         return new ResponseEntity<>(userService.findByName(name), HttpStatus.OK);
@@ -146,5 +147,21 @@ public class UserController {
     public ResponseEntity<User> lockedUser(@PathVariable Long id) {
         Optional<User> userOptional = this.userService.lockedUser(id);
         return userOptional.map(user -> new ResponseEntity<>(user, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @PutMapping("/admin/users/{id}")
+    public ResponseEntity<User> updateUserProfileByAdmin(@PathVariable Long id, @RequestBody User user) {
+        Optional<User> userOptionalByAdmin = this.userService.findById(id);
+        if (!userOptionalByAdmin.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        user.setId(userOptionalByAdmin.get().getId());
+        userService.save(user);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    @GetMapping("/admin/users/roles")
+    public ResponseEntity<Iterable<Role>> findAllRoles() {
+        return new ResponseEntity<>(roleService.findAll(), HttpStatus.OK);
     }
 }
