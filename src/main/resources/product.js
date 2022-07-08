@@ -15,7 +15,6 @@ function listProduct() {
             let str = "";
             for (let i = 0; i < data.length; i++) {
                 str += ` ${data[i].name},${data[i].description},${data[i].price},${data[i].quantity},${data[i].category.name}, <img src="${data[i].img}" style="width: 50px; height: 50px">
-                
                 <button onclick="showEditForm(${data[i].id})">Edit</button>
                 <button onclick="deleteProduct(${data[i].id})">Delete</button>
                 <button onclick="AddToCart(${data[i].id})">Add To Cart</button>
@@ -50,7 +49,7 @@ function showAddProductForm() {
                         <label>Quantity:</label>
                         <input type='number' id="quantity" class="form-control"> 
                         <label>Image:</label>
-                        <input type="file" value="upload" accept=".jpg;.gif" id="fileButton" onchange="upload(event)">            </div>
+                        <input type="file" value="upload" accept=".jpg;.gif" id="fileButton" onchange="upload(event)"></div>
                         <label>Category:</label>
                         <select id="category">`
     $.ajax({

@@ -98,7 +98,7 @@ function login() {
     let password = document.getElementById("password").value;
     let data= {
         username: username,
-            password: password
+        password: password
     }
 
     $.ajax({
@@ -122,7 +122,7 @@ function login() {
                 localStorage.setItem('id', data.id);
                 loadAdminDashboard()
             }
-            if (data.roles[0].authority === "ROLE_USELESS") {
+            if (data.roles[0].authority === "ROLE_USELESS"|| data.status === false) {
                 console.log(data)
                 uselessHome()
             }
@@ -138,8 +138,6 @@ function showUserRole() {
     home.innerHTML = `<button onclick="listProduct()">List Product</button>
     <button onclick="showAddProductForm()">Add Product</button>
     <button onclick="showShoppingCart()">Cart</button>`
-    <button onclick="showAddProductForm()">Add Product</button>
-    <button onclick="showBill()">List_Bill</button>`
 }
 
 function uselessHome() {
@@ -153,5 +151,5 @@ function uselessHome() {
                 <a href="index.html" class="btn btn-primary">Go Home</a>
             </div>
         </div>`
-    str.innerHTML = html
+    str.innerHTML = html;
 }

@@ -1,5 +1,4 @@
 let show = document.getElementById("display");
-let addToCartForm = document.getElementById("addToCartForm");
 
 function showShoppingCart() {
     $.ajax({
