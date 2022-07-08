@@ -24,4 +24,10 @@ public interface UserService extends UserDetailsService {
     boolean isRegister(User user);
 
     boolean isCorrectConfirmPassword(User user);
+
+    void remove(Long id);
+
+    Iterable<User> findByName(String name);
+
+    Optional<User> lockedUser(Long id);
 }

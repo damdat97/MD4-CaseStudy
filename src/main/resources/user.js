@@ -100,6 +100,7 @@ function login() {
         username: username,
             password: password
     }
+
     $.ajax({
         headers: {
             'Accept': 'application/json',
@@ -109,16 +110,48 @@ function login() {
         url: "http://localhost:8081/login",
         data: JSON.stringify(data),
         success: function (data) {
-            console.log(data);
-            localStorage.setItem('token', data.accessToken);
-            localStorage.setItem('id', data.id);
-            showUserRole();
+            if (data.roles[0].authority === "ROLE_USER") {
+                console.log(data);
+                localStorage.setItem('token', data.accessToken);
+                localStorage.setItem('id', data.id);
+                showUserRole();
+            }
+            if (data.roles[0].authority === "ROLE_ADMIN") {
+                console.log(data)
+                localStorage.setItem('token', data.accessToken);
+                localStorage.setItem('id', data.id);
+                loadAdminDashboard()
+            }
+            if (data.roles[0].authority === "ROLE_USELESS") {
+                console.log(data)
+                uselessHome()
+            }
+        },
+        error: function (error) {
+            console.log(error)
         }
     })
+
 }
 
 function showUserRole() {
     home.innerHTML = `<button onclick="listProduct()">List Product</button>
     <button onclick="showAddProductForm()">Add Product</button>
     <button onclick="showShoppingCart()">Cart</button>`
+    <button onclick="showAddProductForm()">Add Product</button>
+    <button onclick="showBill()">List_Bill</button>`
+}
+
+function uselessHome() {
+    let html = `<div class="d-flex align-items-center justify-content-center vh-100">
+            <div class="text-center">
+                <h1 class="display-1 fw-bold">ERROR</h1>
+                <p class="fs-3"> <span class="text-danger">Opps!</span> Your account has been locked.</p>
+                <p class="lead">
+                    You can't access this web.
+                  </p>
+                <a href="index.html" class="btn btn-primary">Go Home</a>
+            </div>
+        </div>`
+    str.innerHTML = html
 }
