@@ -9,9 +9,9 @@ import thuongmaidientu.service.ProductService;
 import java.util.Optional;
 @Service
 public class ProductServiceImpl implements ProductService {
-
     @Autowired
     private ProductRepository productRepository;
+
     @Override
     public Iterable<Product> findAll() {
         return productRepository.findAll();
@@ -30,5 +30,30 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void remove(Long id) {
         productRepository.deleteById(id);
+    }
+
+    @Override
+    public Iterable<Product> findTop5Newest() {
+        return productRepository.findTop5Newest();
+    }
+
+    @Override
+    public Iterable<Product> findWomenProduct() {
+        return productRepository.findWomenProduct();
+    }
+
+    @Override
+    public Iterable<Product> findAccessoryProduct() {
+        return productRepository.findAccessoryProduct();
+    }
+
+    @Override
+    public Iterable<Product> findMenProduct() {
+        return productRepository.findMenProduct();
+    }
+
+    @Override
+    public Iterable<Product> findByPrice(int from, int to) {
+        return productRepository.findByPrice(from, to);
     }
 }
