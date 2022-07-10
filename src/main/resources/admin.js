@@ -1,7 +1,7 @@
-let show = document.getElementById('content')
+let showAdmin = document.getElementById('content')
 
 function loadAdminDashboard() {
-    show.innerHTML = `<div class="container-scroller">
+    showAdmin.innerHTML = `<div class="container-scroller">
 <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
             <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome Sam's Dashboard!</h5>
@@ -213,7 +213,7 @@ function loadUserList() {
             </div>
         </div>
     </div>`
-            show.innerHTML = str
+            showAdmin.innerHTML = str
         }
     })
 
@@ -365,7 +365,7 @@ function findByName() {
             </div>
         </div>
     </div>`
-            show.innerHTML = str
+            showAdmin.innerHTML = str
 
         }
     })
@@ -549,7 +549,7 @@ function editUser(id) {
         </div>
     </div>
 </div>`
-                        show.innerHTML = str
+                        showAdmin.innerHTML = str
         }
     })
 }

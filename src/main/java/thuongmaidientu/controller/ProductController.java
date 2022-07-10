@@ -44,4 +44,29 @@ public class ProductController {
         productService.remove(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping("/find-top-5-newest")
+    public ResponseEntity<Iterable<Product>> findTop5Newest() {
+        return new ResponseEntity<>(productService.findTop5Newest(), HttpStatus.OK);
+    }
+
+    @GetMapping("/find-women-product")
+    public ResponseEntity<Iterable<Product>> findWomenProduct() {
+        return new ResponseEntity<>(productService.findWomenProduct(), HttpStatus.OK);
+    }
+
+    @GetMapping("/find-accessory-product")
+    public ResponseEntity<Iterable<Product>> findAccessoryProduct() {
+        return new ResponseEntity<>(productService.findAccessoryProduct(), HttpStatus.OK);
+    }
+
+    @GetMapping("/find-men-product")
+    public ResponseEntity<Iterable<Product>> findManProduct() {
+        return new ResponseEntity<>(productService.findMenProduct(), HttpStatus.OK);
+    }
+
+    @GetMapping("/find-by-price")
+    public ResponseEntity<Iterable<Product>> findByPrice(@RequestParam(value = "from") int from, @RequestParam(value = "to") int to) {
+        return new ResponseEntity<>(productService.findByPrice(from, to), HttpStatus.OK);
+    }
 }
