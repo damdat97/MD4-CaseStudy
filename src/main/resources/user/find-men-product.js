@@ -1,6 +1,7 @@
 let listMenProduct = document.getElementById('content')
 
 function showMenProduct() {
+    let id = localStorage.getItem('id');
     $.ajax({
         headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -78,13 +79,53 @@ function showMenProduct() {
     </header>
 
         <div class="fs_menu_overlay"></div>
+        <div class="container product_section_container">
+    <div class="row">
+        <div class="sidebar">
+            <div class="sidebar_section" style="padding: 10px">
+                <div class="sidebar_title">
+                    <h5>Category</h5>
+                </div>
+                <ul class="sidebar_categories">
+                    <li class="active"><a onclick="showMenProduct()"><span><i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i></span>Men</a></a></li>
+                    <li class="active"><a onclick="showWomenProduct()"><span><i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i></span>Women</a></li>
+                    <li class="active"><a onclick="showAccessoryProduct()"><span><i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i></span>Accessory</a></a></li>
+                    <li class="active"><a onclick="showNewArrival()"><span><i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i></span>New Arrival</a></a></li>
+                </ul>
+            </div>
+
+            <!-- Price Range Filtering -->
+            <div class="sidebar_section" style="padding: 10px">
+                <div class="sidebar_title">
+                    <h5>Filter by Price</h5>
+                </div>
+                    <input type="number" id="amountFrom" style="border:0; color:#ece8e8" placeholder="Amount From">
+                    <input type="number" id="amountTo" style="border:0; color:#fffdfd" placeholder="Amount To">
+                <div class="filter_button" onclick="filterByPrice()"><span>filter</span></div>
+            
+            </div>
+            
+            <div class="sidebar_section" style="padding: 10px">
+                <div class="sidebar_title">
+                    <h5>Find User Shop</h5>
+                </div>
+                    <input type="text" id="shopName" style="border:0; color:#ece8e8" placeholder="Shop">
+                <div class="filter_button" onclick="findShopByName()"><span>Find</span></div>
+            
+            </div>
+    </div>
             <div id="wrapper">
                 <div class="headline">
                     <h2>Product List</h2>
                 </div>
                 <ul class="products">`
             for (let i = 0; i < data.length; i++) {
-                html += `<li>
+                if(data[i].user.id == id) {
+                    html += `<li>
                             <div class="product_details">
                                 <div>
                                     <div class="product-top" style="text-align: center">
@@ -95,14 +136,35 @@ function showMenProduct() {
                                         <div class="product-price"><b>${data[i].price}</b></div>
                                         <div class="product-info"><b>${data[i].description}</b></div>
                                         <div class="product-info"><b>${data[i].quantity}</b></div>
+                                        <div class="product-info"><b>${data[i].category.name}</b></div>
                                 </div>
-                                <div class="btn-primary" style="text-align: center"><a onclick="addToCart(${data[i].id})" ><b>Add to cart</b></a></div>
                             </div>
                             </div>
                         </li>`
+                } if (data[i].user.id != id) {
+                    html += `<li>
+                            <div class="product_details">
+                                <div>
+                                    <div class="product-top" style="text-align: center">
+                                        <div>
+                                            <img style="height: 240px; width: 200px" src="${data[i].img}" alt="">
+                                        </div>
+                                        <div class="product-info"><b>${data[i].name}</b></div>
+                                        <div class="product-price"><b>${data[i].price}</b></div>
+                                        <div class="product-info"><b>${data[i].description}</b></div>
+                                        <div class="product-info"><b>${data[i].quantity}</b></div>
+                                        <div class="product-info"><b>${data[i].category.name}</b></div>
+                                </div>
+                                <div class="btn-primary" style="text-align: center"><a href="/checkout/responsive-shopping-cart-layout/check-out.jsp" ><b>Add to cart</b></a></div>
+                            </div>
+                            </div>
+                        </li>`
+                }
             }
             html += `</ul>
             </div>
+        </div>
+    </div>
     <div class="benefit">
         <div class="container">
             <div class="row benefit_row">
@@ -145,6 +207,7 @@ function showMenProduct() {
             </div>
         </div>
     </div>
+    
     
     <!-- Newsletter -->
 

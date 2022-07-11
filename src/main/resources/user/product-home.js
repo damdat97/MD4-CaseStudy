@@ -75,7 +75,7 @@ function loadUserHome() {
     <div class="container product_section_container">
     <div class="row">
         <div class="sidebar">
-            <div class="sidebar_section">
+            <div class="sidebar_section" style="padding: 10px">
                 <div class="sidebar_title">
                     <h5>Category</h5>
                 </div>
@@ -92,25 +92,33 @@ function loadUserHome() {
             </div>
 
             <!-- Price Range Filtering -->
-            <div class="sidebar_section">
+            <div class="sidebar_section" style="padding: 10px">
                 <div class="sidebar_title">
                     <h5>Filter by Price</h5>
                 </div>
-               
-                    <input type="text" id="amountFrom" style="border:0; color:#ece8e8" placeholder="Amount From">
-                    <input type="text" id="amountTo" style="border:0; color:#fffdfd" placeholder="Amount To">
-                
-                <div id="slide
+                    <input type="number" id="amountFrom" style="border:0; color:#ece8e8" placeholder="Amount From">
+                    <input type="number" id="amountTo" style="border:0; color:#fffdfd" placeholder="Amount To">
                 <div class="filter_button" onclick="filterByPrice()"><span>filter</span></div>
+            
             </div>
-        </div>
-        <div class="col product_section clearfix">
+            
+            <div class="sidebar_section" style="padding: 10px">
+                <div class="sidebar_title">
+                    <h5>Find User Shop</h5>
+                </div>
+                    <input type="text" id="shopName" style="border:0; color:#ece8e8" placeholder="Shop">
+                <div class="filter_button" onclick="findShopByName()"><span>Find</span></div>
+            
+            </div>
+    </div>
+    
+        <div class="col product_section clearfix" style="margin-top: 0">
 
             <!-- Slider -->
 
-            <div class="main_slider" style="background-image:url(/user/images/single_1.jpg)">
+            <div class="main_slider" style="background-image:url(/user/images/single_1.jpg); margin-top: 0">
                 <div class="container fill_height">
-                    <div class="row align-items-center fill_height">
+                    <div class="row align-items-center fill_height"  style="">
                         <div class="col">
                             <div class="main_slider_content">
                                 <h6>Spring / Summer Collection 2017</h6>
@@ -156,7 +164,6 @@ function loadUserHome() {
                 </div>
             </div>
         </div>
-    </div>
 </div>
     <!-- Benefit -->
 

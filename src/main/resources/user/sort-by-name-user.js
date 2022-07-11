@@ -1,14 +1,17 @@
-let listAccessoryProduct = document.getElementById('content')
+let showShop = document.getElementById("content")
 
-function showAccessoryProduct() {
+function findShopByName() {
     let id = localStorage.getItem('id');
+    let name = document.getElementById("shopName").value;
     $.ajax({
         headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('token')
         },
         type: "GET",
-        url: "http://localhost:8081/products/find-accessory-product",
+        url: "http://localhost:8081/products/find-shop-by-name?name=" + name,
         success: function (data) {
+
+            console.log(data)
             let html = `<div class="super_container">
     <!-- Header -->
     <header class="header trans_300">
@@ -61,7 +64,7 @@ function showAccessoryProduct() {
                                 <li><a href=""><i class="fa fa-user" aria-hidden="true"></i></a></li>
                                 <li class="checkout">
 
-                                    <a onclick="showShoppingCart()">
+                                    <a href="/orders?action=show">
                                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                         <span id="checkout_items" class="checkout_items"></span>
                                     </a>
@@ -120,7 +123,7 @@ function showAccessoryProduct() {
     </div>
             <div id="wrapper">
                 <div class="headline">
-                    <h2>Product List</h2>
+                    <h2>List Product</h2>
                 </div>
                 <ul class="products">`
             for (let i = 0; i < data.length; i++) {
@@ -266,7 +269,7 @@ function showAccessoryProduct() {
             </div>
         </div>
     </footer>`
-            listAccessoryProduct.innerHTML = html
+            showShop.innerHTML = html
         }, error: function (data) {
             console.log(data)
         }
