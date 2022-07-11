@@ -2,7 +2,7 @@ package thuongmaidientu.service;
 
 import thuongmaidientu.model.Product;
 
-public interface ProductService extends GenaralService<Product>{
+public interface ProductService extends GeneralService<Product>{
     Iterable<Product> findTop5Newest();
 
     Iterable<Product> findWomenProduct();

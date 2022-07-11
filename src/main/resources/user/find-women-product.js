@@ -60,7 +60,7 @@ function showWomenProduct() {
                                 <li><a href=""><i class="fa fa-user" aria-hidden="true"></i></a></li>
                                 <li class="checkout">
 
-                                    <a href="/orders?action=show">
+                                    <a onclick="showShoppingCart()">
                                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                         <span id="checkout_items" class="checkout_items"></span>
                                     </a>
@@ -96,7 +96,7 @@ function showWomenProduct() {
                                         <div class="product-info"><b>${data[i].description}</b></div>
                                         <div class="product-info"><b>${data[i].quantity}</b></div>
                                 </div>
-                                <div class="btn-primary" style="text-align: center"><a href="/checkout/responsive-shopping-cart-layout/check-out.jsp" ><b>Add to cart</b></a></div>
+                                <div class="btn-primary" style="text-align: center"><a onclick="addToCart(${data[i].id})" ><b>Add to cart</b></a></div>
                             </div>
                             </div>
                         </li>`

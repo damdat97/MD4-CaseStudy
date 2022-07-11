@@ -53,7 +53,7 @@ function loadUserHome() {
                                 <li><a href=""><i class="fa fa-user" aria-hidden="true"></i></a></li>
                                 <li class="checkout">
 
-                                    <a href="/orders?action=show">
+                                    <a onclick="showShoppingCart()">
                                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                         <span id="checkout_items" class="checkout_items"></span>
                                     </a>

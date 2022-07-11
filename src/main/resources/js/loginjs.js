@@ -131,7 +131,7 @@ function showUserRole() {
     let home = document.getElementById("home");
     home.innerHTML = `<button onclick="listProduct()">List Product</button>
     <button onclick="showAddProductForm()">Add Product</button>
-    <button onclick="showBill()">List_Bill</button>`
+    <button onclick="showShoppingCart()">List_Bill</button>`
 }
 
 
