@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import thuongmaidientu.model.CartItem;
+import thuongmaidientu.model.Product;
 import thuongmaidientu.service.ProductService;
 import thuongmaidientu.service.ShoppingCartService;
 
@@ -17,6 +18,9 @@ public class ShoppingCartController {
 
     @Autowired
     private ShoppingCartService shoppingCartService;
+
+    @Autowired
+    private ProductService productService;
 
     @GetMapping({"/{id}"})
     public ResponseEntity<Iterable<CartItem>> showShoppingCart(@PathVariable Long id) {
@@ -31,6 +35,7 @@ public class ShoppingCartController {
     @PostMapping
     public ResponseEntity<CartItem> addToShoppingCart(@RequestBody CartItem cartItem) {
         Iterable<CartItem> listCart = shoppingCartService.findByUserId(cartItem.getUser().getId());
+        Optional<Product> product = productService.findById(cartItem.getProduct().getId());
         for (CartItem item : listCart) {
             if (item.getProduct().getId().equals(cartItem.getProduct().getId())) {
                 if (item.getQuantity() < item.getProduct().getQuantity()) {
@@ -43,7 +48,7 @@ public class ShoppingCartController {
                 }
             }
         }
-        cartItem.getProduct().setQuantity(cartItem.getProduct().getQuantity() - cartItem.getQuantity());
+        product.get().setQuantity(product.get().getQuantity() - cartItem.getQuantity());
         shoppingCartService.save(cartItem);
         return new ResponseEntity<>(cartItem, HttpStatus.OK);
     }
