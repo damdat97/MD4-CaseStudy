@@ -102,8 +102,8 @@ function showWomenProduct() {
                 <div class="sidebar_title">
                     <h5>Filter by Price</h5>
                 </div>
-                    <input type="number" id="amountFrom" style="border:0; color:#ece8e8" placeholder="Amount From">
-                    <input type="number" id="amountTo" style="border:0; color:#fffdfd" placeholder="Amount To">
+                    <input type="number" id="amountFrom" style="border:0; color:#ece8e8" placeholder="From Price">
+                    <input type="number" id="amountTo" style="border:0; color:#fffdfd" placeholder="To Price">
                 <div class="filter_button" onclick="filterByPrice()"><span>filter</span></div>
             
             </div>
@@ -172,7 +172,7 @@ function showWomenProduct() {
                     <div class="benefit_item d-flex flex-row align-items-center">
                         <div class="benefit_icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
                         <div class="benefit_content">
-                            <h6>free shipping</h6>
+                            <h6>Free shipping</h6>
                             <p>Suffered Alteration in Some Form</p>
                         </div>
                     </div>
@@ -181,7 +181,7 @@ function showWomenProduct() {
                     <div class="benefit_item d-flex flex-row align-items-center">
                         <div class="benefit_icon"><i class="fa fa-money" aria-hidden="true"></i></div>
                         <div class="benefit_content">
-                            <h6>cach on delivery</h6>
+                            <h6>Catch on delivery</h6>
                             <p>The Internet Tend To Repeat</p>
                         </div>
                     </div>
@@ -199,7 +199,7 @@ function showWomenProduct() {
                     <div class="benefit_item d-flex flex-row align-items-center">
                         <div class="benefit_icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
                         <div class="benefit_content">
-                            <h6>opening all week</h6>
+                            <h6>Opening all week</h6>
                             <p>8AM - 09PM</p>
                         </div>
                     </div>

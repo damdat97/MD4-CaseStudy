@@ -175,6 +175,7 @@ function editProduct() {
             id: userId
         }
     }
+    console.log(product)
     $.ajax({
         type:"PUT",
         headers:{

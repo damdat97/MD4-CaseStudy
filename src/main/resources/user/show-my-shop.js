@@ -157,7 +157,7 @@ function showMyShop() {
                     <div class="benefit_item d-flex flex-row align-items-center">
                         <div class="benefit_icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
                         <div class="benefit_content">
-                            <h6>free shipping</h6>
+                            <h6>Free shipping</h6>
                             <p>Suffered Alteration in Some Form</p>
                         </div>
                     </div>
