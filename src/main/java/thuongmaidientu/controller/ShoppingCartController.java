@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import thuongmaidientu.model.CartItem;
+import thuongmaidientu.service.ProductService;
 import thuongmaidientu.service.ShoppingCartService;
 
 import java.util.Optional;
@@ -32,11 +33,17 @@ public class ShoppingCartController {
         Iterable<CartItem> listCart = shoppingCartService.findByUserId(cartItem.getUser().getId());
         for (CartItem item : listCart) {
             if (item.getProduct().getId().equals(cartItem.getProduct().getId())) {
-                item.setQuantity(item.getQuantity() + cartItem.getQuantity());
-                shoppingCartService.save(item);
-                return new ResponseEntity<>(item, HttpStatus.OK);
+                if (item.getQuantity() < item.getProduct().getQuantity()) {
+                    item.setQuantity(item.getQuantity() + cartItem.getQuantity());
+                    item.getProduct().setQuantity(item.getProduct().getQuantity() - cartItem.getQuantity());
+                    shoppingCartService.save(item);
+                    return new ResponseEntity<>(item, HttpStatus.OK);
+                } else {
+                    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+                }
             }
         }
+        cartItem.getProduct().setQuantity(cartItem.getProduct().getQuantity() - cartItem.getQuantity());
         shoppingCartService.save(cartItem);
         return new ResponseEntity<>(cartItem, HttpStatus.OK);
     }
@@ -48,12 +55,15 @@ public class ShoppingCartController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         cartItem.setId(cartItemOptional.get().getId());
+        cartItemOptional.get().getProduct().setQuantity(cartItemOptional.get().getProduct().getQuantity() - (cartItem.getQuantity()-cartItemOptional.get().getQuantity()));
         shoppingCartService.save(cartItem);
         return new ResponseEntity<>(cartItem, HttpStatus.OK);
     }
 
     @DeleteMapping({"/cart/{id}"})
     public ResponseEntity<CartItem> deleteShoppingCart(@PathVariable Long id) {
+        Optional<CartItem> cartItemOptional = shoppingCartService.findById(id);
+        cartItemOptional.get().getProduct().setQuantity(cartItemOptional.get().getProduct().getQuantity() + cartItemOptional.get().getQuantity());
         shoppingCartService.remove(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

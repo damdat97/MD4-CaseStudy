@@ -1,61 +1,114 @@
 let showCart = document.getElementById("content");
 
 function showShoppingCart() {
-    let str = `<div class="container-scroller">
-    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-        <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
-            <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome Sam's dashboard!</h5>
-            <ul class="navbar-nav navbar-nav-right ml-auto">
-                    <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
-                    <input type="text" id="name" placeholder="Name"> 
-                    <button type="submit" onclick="findByName()" style="margin-right: 10px; margin-left: 5px">Search</button>
-                    <a onclick="logout()">Logout</a><i class="fa-solid fa-arrow-right-from-bracket" style="margin-left: 5px"></i>
-                </li>
-            </ul>
-            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-                <span class="icon-menu"></span>
-            </button>
-        </div>
-    </nav>
-    <div class="container-fluid page-body-wrapper">
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">
-            <ul class="nav">
-                <li class="nav-item nav-profile">
-                    <a href="#" class="nav-link">
-                        <div class="text-wrapper">
-                            <p class="designation">User</p>
-                        </div>
-                        <div class="icon-container">
-                            <i class="fa-solid fa-chart-scatter-bubble"></i>
-                            <div class="dot-indicator bg-danger"></div>
-                        </div>
-                    </a>
-                </li>
-                <li class="nav-item nav-category">
-                    <span class="nav-link">Dashboard</span>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" onclick="loadAdminDashboard()">
-                        <span class="menu-title">Dashboard</span>
-                        <i class="fa-solid fa-desktop" style="margin-left: 10px"></i>
-                    </a>
-                </li>
-                <li class="nav-item nav-category"><span class="nav-link">Management</span></li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#product" aria-expanded="false"
-                       aria-controls="product">
-                        <span class="menu-title">User Management</span>
-                        <i class="fa-solid fa-users" style="margin-left: 10px"></i>
-                    </a>
-                    <div class="collapse" id="product">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" onclick="loadUserList()">User List</a></li>
-                        </ul>
+    let str = `<div class="super_container">
+    <!-- Header -->
+    <header class="header trans_300">
+        <!-- Top Navigation -->
+        <div class="top_nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="top_nav_left">Free shipping on all u.s orders over $50</div>
                     </div>
-                </li>
-            </ul>
-        </nav>
-        <!-- partial -->
+                    <div class="col-md-6 text-right">
+                        <div class="top_nav_right">
+                            <ul class="top_nav_menu">
+                                <!-- Currency / Language / My Account -->
+                                <li class="account">
+                                    <a href="#">
+                                        My Account
+                                        <i class="fa fa-angle-down"></i>
+                                    </a>
+                                    <ul class="account_selection">
+                                       <li><a onclick="showLoginForm()" "><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
+                                       <li><a onclick="showRegisterForm()"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
+                                        <li><a onclick="logout()"><i class="fa fa-user-plus" aria-hidden="true"></i>LogOut</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation -->
+
+        <div class="main_nav_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-right">
+                        <div class="logo_container">
+                            <a onclick="loadUserHome()">colo<span>shop</span></a>
+                        </div>
+                        <nav class="navbar">
+                            <ul class="navbar_menu">
+                                <li><a onclick="loadUserHome()">home</a></li>
+                                <li><a onclick="showMyShop()">my shop</a></li>  
+                            </ul>
+                            <ul class="navbar_user">
+                                <li> <a onclick=""><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                                <li><a href=""><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                                <li class="checkout">
+
+                                    <a onclick="showShoppingCart()">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                        <span id="checkout_items" class="checkout_items"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="hamburger_container">
+                                <i class="fa fa-bars" aria-hidden="true"></i>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+        <div class="fs_menu_overlay"></div>
+        <div class="container product_section_container">
+    <div class="row">
+        <div class="sidebar" style="z-index: 0">
+            <div class="sidebar_section" style="padding: 10px;">
+                <div class="sidebar_title">
+                    <h5>Category</h5>
+                </div>
+                <ul class="sidebar_categories">
+                    <li class="active"><a onclick="showMenProduct()"><span><i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i></span>Men</a></a></li>
+                    <li class="active"><a onclick="showWomenProduct()"><span><i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i></span>Women</a></li>
+                    <li class="active"><a onclick="showAccessoryProduct()"><span><i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i></span>Accessory</a></a></li>
+                    <li class="active"><a onclick="showNewArrival()"><span><i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i></span>New Arrival</a></a></li>
+                </ul>
+            </div>
+
+            <!-- Price Range Filtering -->
+            <div class="sidebar_section" style="padding: 10px">
+                <div class="sidebar_title">
+                    <h5>Filter by Price</h5>
+                </div>
+                    <input type="number" id="amountFrom" style="border:0; color:#ece8e8" placeholder="Amount From">
+                    <input type="number" id="amountTo" style="border:0; color:#fffdfd" placeholder="Amount To">
+                <div class="filter_button" onclick="filterByPrice()"><span>filter</span></div>
+            
+            </div>
+            
+            <div class="sidebar_section" style="padding: 10px">
+                <div class="sidebar_title">
+                    <h5>Find User Shop</h5>
+                </div>
+                    <input type="text" id="shopName" style="border:0; color:#ece8e8" placeholder="Shop">
+                <div class="filter_button" onclick="findShopByName()"><span>Find</span></div>
+            
+            </div>
+    </div>
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
@@ -141,6 +194,10 @@ function addToCart(id) {
         success: function (cartItem) {
             console.log(cartItem);
             alert("Product added to bill");
+            showShoppingCart();
+        },
+        error: function () {
+            alert("Not enough quantity in stock")
         }
     })
 }
@@ -169,6 +226,9 @@ function updateShoppingCart(id) {
             console.log(cartItem);
             showShoppingCart();
             alert("Update success");
+        },
+        error: function () {
+            alert("Not enough quantity in stock")
         }
     })
 }
@@ -177,7 +237,8 @@ function deleteShoppingCart(id) {
     $.ajax({
         headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('token')
-        }, type: "DELETE", url: "http://localhost:8081/shopping-cart/cart/" + id, success: function (data) {
+        }, type: "DELETE", url: "http://localhost:8081/shopping-cart/cart/" + id,
+        success: function (data) {
             console.log(data);
             alert("Delete success");
             showShoppingCart();
@@ -186,77 +247,114 @@ function deleteShoppingCart(id) {
 }
 
 function showEditCart(idCartItem) {
-    let str = `<div class="container-scroller">
-    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-        <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
-            <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome Sam's dashboard!</h5>
-            <ul class="navbar-nav navbar-nav-right ml-auto">
-               
-                    <input type="text" id="name" placeholder="Name"> 
-                    <button type="submit" onclick="findByName()">Search</button>
-              
-                <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
-                    <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown"
-                       aria-expanded="false">
-                        <span class="font-weight-normal"> Admin </span></a>
-                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                        <div class="dropdown-header text-center">
-                            <p class="mb-1 mt-3">Admin</p>
-                        </div>
-                        <a class="dropdown-item"><i class="dropdown-item-icon icon-user text-primary"></i> My Profile
-                            <span class="badge badge-pill badge-danger">1</span></a>
-                        <a class="dropdown-item"><i class="dropdown-item-icon icon-speech text-primary"></i>
-                            Messages</a>
-                        <a class="dropdown-item"><i class="dropdown-item-icon icon-energy text-primary"></i>
-                            Activity</a>
-                        <a class="dropdown-item"><i class="dropdown-item-icon icon-question text-primary"></i> FAQ</a>
-                        <a href="/login" class="dropdown-item"><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
+    let str = `<div class="super_container">
+    <!-- Header -->
+    <header class="header trans_300">
+        <!-- Top Navigation -->
+        <div class="top_nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="top_nav_left">Free shipping on all u.s orders over $50</div>
                     </div>
-                </li>
-            </ul>
-            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-                <span class="icon-menu"></span>
-            </button>
+                    <div class="col-md-6 text-right">
+                        <div class="top_nav_right">
+                            <ul class="top_nav_menu">
+                                <!-- Currency / Language / My Account -->
+                                <li class="account">
+                                    <a href="#">
+                                        My Account
+                                        <i class="fa fa-angle-down"></i>
+                                    </a>
+                                    <ul class="account_selection">
+                                       <li><a onclick="showLoginForm()" "><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
+                                       <li><a onclick="showRegisterForm()"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
+                                        <li><a onclick="logout()"><i class="fa fa-user-plus" aria-hidden="true"></i>LogOut</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </nav>
-    <div class="container-fluid page-body-wrapper">
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">
-            <ul class="nav">
-                <li class="nav-item nav-profile">
-                    <a href="#" class="nav-link">
-                        <div class="text-wrapper">
-                            <p class="designation">Administrator</p>
+
+        <!-- Main Navigation -->
+
+        <div class="main_nav_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-right">
+                        <div class="logo_container">
+                            <a onclick="loadUserHome()">colo<span>shop</span></a>
                         </div>
-                        <div class="icon-container">
-                            <i class="fa-solid fa-chart-scatter-bubble"></i>
-                            <div class="dot-indicator bg-danger"></div>
-                        </div>
-                    </a>
-                </li>
-                <li class="nav-item nav-category">
-                    <span class="nav-link">Dashboard</span>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" onclick="loadAdminDashboard()">
-                        <span class="menu-title">Dashboard</span>
-                        <i class="fa-solid fa-desktop" style="margin-left: 10px"></i>
-                    </a>
-                </li>
-                <li class="nav-item nav-category"><span class="nav-link">Management</span></li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#product" aria-expanded="false"
-                       aria-controls="product">
-                        <span class="menu-title">User Management</span>
-                        <i class="fa-solid fa-users" style="margin-left: 10px"></i>
-                    </a>
-                    <div class="collapse" id="product">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" onclick="loadUserList()">User List</a></li>
-                        </ul>
+                        <nav class="navbar">
+                            <ul class="navbar_menu">
+                                <li><a onclick="loadUserHome()">home</a></li>
+                                <li><a onclick="showMyShop()">my shop</a></li>  
+                            </ul>
+                            <ul class="navbar_user">
+                                <li> <a onclick=""><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                                <li><a href=""><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                                <li class="checkout">
+
+                                    <a onclick="showShoppingCart()">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                        <span id="checkout_items" class="checkout_items"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="hamburger_container">
+                                <i class="fa fa-bars" aria-hidden="true"></i>
+                            </div>
+                        </nav>
                     </div>
-                </li>
-            </ul>
-        </nav>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+        <div class="fs_menu_overlay"></div>
+        <div class="container product_section_container">
+    <div class="row">
+        <div class="sidebar" style="z-index: 0">
+            <div class="sidebar_section" style="padding: 10px;">
+                <div class="sidebar_title">
+                    <h5>Category</h5>
+                </div>
+                <ul class="sidebar_categories">
+                    <li class="active"><a onclick="showMenProduct()"><span><i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i></span>Men</a></a></li>
+                    <li class="active"><a onclick="showWomenProduct()"><span><i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i></span>Women</a></li>
+                    <li class="active"><a onclick="showAccessoryProduct()"><span><i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i></span>Accessory</a></a></li>
+                    <li class="active"><a onclick="showNewArrival()"><span><i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i></span>New Arrival</a></a></li>
+                </ul>
+            </div>
+
+            <!-- Price Range Filtering -->
+            <div class="sidebar_section" style="padding: 10px">
+                <div class="sidebar_title">
+                    <h5>Filter by Price</h5>
+                </div>
+                    <input type="number" id="amountFrom" style="border:0; color:#ece8e8" placeholder="Amount From">
+                    <input type="number" id="amountTo" style="border:0; color:#fffdfd" placeholder="Amount To">
+                <div class="filter_button" onclick="filterByPrice()"><span>filter</span></div>
+            
+            </div>
+            
+            <div class="sidebar_section" style="padding: 10px">
+                <div class="sidebar_title">
+                    <h5>Find User Shop</h5>
+                </div>
+                    <input type="text" id="shopName" style="border:0; color:#ece8e8" placeholder="Shop">
+                <div class="filter_button" onclick="findShopByName()"><span>Find</span></div>
+            
+            </div>
+    </div>
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
@@ -273,8 +371,7 @@ function showEditCart(idCartItem) {
 
         type: 'GET', url: 'http://localhost:8081/shopping-cart/cart/' + idCartItem, success: function (data) {
             console.log(data)
-            str += `<p class="card-description"> Thông tin cá nhân </p>
-                                    <div class="row" style="color: black">
+            str += ` <div class="row" style="color: black">
                                      <div class="col-md-12">
                                             <div class="form-group row">
                                                 <div class="col-sm-12 d-flex justify-content-center">
