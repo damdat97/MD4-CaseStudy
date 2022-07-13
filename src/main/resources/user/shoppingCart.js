@@ -238,16 +238,18 @@ function updateShoppingCart(id) {
 }
 
 function deleteShoppingCart(id) {
-    $.ajax({
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('token')
-        }, type: "DELETE", url: "http://localhost:8081/shopping-cart/cart/" + id,
-        success: function (data) {
-            console.log(data);
-            alert("Delete success");
-            showShoppingCart();
-        }
-    })
+    if (confirm("Are you sure you want to delete this order?")) {
+        $.ajax({
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }, type: "DELETE", url: "http://localhost:8081/shopping-cart/cart/" + id,
+            success: function (data) {
+                console.log(data);
+                alert("Delete success");
+                showShoppingCart();
+            }
+        })
+    }
 }
 
 function paymentShoppingCart(id) {
