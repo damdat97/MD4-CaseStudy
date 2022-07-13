@@ -45,8 +45,7 @@ function loadUserHome() {
                         <nav class="navbar">
                             <ul class="navbar_menu">
                                 <li><a onclick="loadUserHome()">home</a></li>
-                                <li><a href="/products?action=sell-list">my shop</a></li>
-                                <li><a href="/order-details">single product</a></li>
+                                <li><a onclick="showMyShop()">my shop</a></li>
                             </ul>
                             <ul class="navbar_user">
                                 <li> <a onclick="sortProduct()"><i class="fa fa-search" aria-hidden="true"></i></a></li>

@@ -32,7 +32,6 @@ public class ShoppingCartController {
         Iterable<CartItem> listCart = shoppingCartService.findByUserId(cartItem.getUser().getId());
         for (CartItem item : listCart) {
             if (item.getProduct().getId().equals(cartItem.getProduct().getId())) {
-                item.setId(cartItem.getId());
                 item.setQuantity(item.getQuantity() + cartItem.getQuantity());
                 shoppingCartService.save(item);
                 return new ResponseEntity<>(item, HttpStatus.OK);

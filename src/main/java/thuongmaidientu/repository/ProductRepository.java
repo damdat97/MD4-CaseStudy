@@ -6,7 +6,7 @@ import org.springframework.data.repository.query.Param;
 import thuongmaidientu.model.Product;
 
 public interface ProductRepository extends JpaRepository<Product,Long> {
-    @Query(value = "select * from product order by id desc limit 5;", nativeQuery = true)
+    @Query(value = "select * from thuongmaidientu.product order by id desc limit 10;", nativeQuery = true)
     Iterable<Product> findTop5Newest();
 
     @Query(value = "select * from product\n" +
