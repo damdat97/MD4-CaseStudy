@@ -1,5 +1,6 @@
 package thuongmaidientu.service;
 
+import thuongmaidientu.model.CartItem;
 import thuongmaidientu.model.Product;
 
 public interface ProductService extends GeneralService<Product>{
@@ -12,4 +13,6 @@ public interface ProductService extends GeneralService<Product>{
     Iterable<Product> findMenProduct();
 
     Iterable<Product> findByPrice(int from, int to);
+
+    Iterable<Product> findByUserId(Long id);
 }

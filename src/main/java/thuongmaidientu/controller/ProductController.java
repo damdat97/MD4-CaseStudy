@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import thuongmaidientu.model.CartItem;
 import thuongmaidientu.model.Product;
 import thuongmaidientu.service.impl.ProductServiceImpl;
 
@@ -68,5 +69,10 @@ public class ProductController {
     @GetMapping("/find-by-price")
     public ResponseEntity<Iterable<Product>> findByPrice(@RequestParam(value = "from") int from, @RequestParam(value = "to") int to) {
         return new ResponseEntity<>(productService.findByPrice(from, to), HttpStatus.OK);
+    }
+
+    @GetMapping({"/find-my-shop/{id}"})
+    public ResponseEntity<Iterable<Product>> showShoppingCart(@PathVariable Long id) {
+        return new ResponseEntity<>(productService.findByUserId(id), HttpStatus.OK);
     }
 }

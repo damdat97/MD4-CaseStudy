@@ -31,7 +31,7 @@ function showAddProductForm() {
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -114,13 +114,12 @@ function saveProduct() {
 }
 
 function showEditForm(id) {
-
     let edit = `
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -214,7 +213,7 @@ function editProduct() {
         data :JSON.stringify(house),
         success: function () {
             $('#editModal').modal('hide');
-            loadUserHome()
+            showMyShop()
             localStorage.removeItem(key);
         },
         error: function (error) {
@@ -234,7 +233,7 @@ function deleteProduct(id){
             type: 'DELETE',
             url: 'http://localhost:8081/products/'+id,
             success: function (){
-                listProduct()
+                showMyShop()
             },
             error: function (error) {
                 console.log(error)

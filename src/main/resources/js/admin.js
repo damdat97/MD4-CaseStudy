@@ -187,7 +187,7 @@ function loadUserList() {
                                                                     </td>`
                                         }
                                         str += `<td width="10px">
-                                                <a onclick="viewDetailsUser(${data[i].id})" class="nav-link"><i class="fa-solid fa-eye" style="margin-right: 5px"></i>View</a>
+                                                <a onclick="showError404()" class="nav-link"><i class="fa-solid fa-eye" style="margin-right: 5px"></i>View</a>
                                             </td>
                                             <td width="10px">
                                                 <a onclick="editUser(${data[i].id})" class="nav-link"><i class="fa-solid fa-pencil" style="margin-right: 5px"></i>Edit</a>
@@ -253,7 +253,6 @@ function findByName() {
                 <li class="nav-item nav-profile">
                     <a href="#" class="nav-link">
                         <div class="text-wrapper">
-                            <p class="profile-name">Lê Văn Sơn</p>
                             <p class="designation">Administrator</p>
                         </div>
                         <div class="icon-container">
@@ -339,7 +338,7 @@ function findByName() {
                                     }
                                     str += `
                                             <td width="10px">
-                                                <a onclick="viewDetailsUser(${data[i].id})" class="nav-link"><i class="icon-options">View</i></a>
+                                                <a onclick="showError404()" class="nav-link"><i class="icon-options">View</i></a>
                                             </td>
                                             <td width="10px">
                                                 <a onclick="editUser(${data[i].id})" class="nav-link"><i class="icon-pencil">Edit</i></a>

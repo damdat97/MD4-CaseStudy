@@ -203,7 +203,7 @@ function showUserRole() {
 }
 
 function uselessHome() {
-    let html = `<div class="d-flex align-items-center justify-content-center vh-100">
+    show.innerHTML = `<div class="d-flex align-items-center justify-content-center vh-100">
             <div class="text-center">
                 <h1 class="display-1 fw-bold">ERROR</h1>
                 <p class="fs-3"> <span class="text-danger">Opps!</span> Your account has been locked.</p>
@@ -213,7 +213,6 @@ function uselessHome() {
                 <a href="index.html" class="btn btn-primary">Go Home</a>
             </div>
         </div>`
-    show.innerHTML = html
 }
 
 function logout() {

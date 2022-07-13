@@ -1,7 +1,16 @@
-let display = document.getElementById("content")
+let shopMyShop = document.getElementById('content')
 
-function loadUserHome() {
-    let str = `<div class="super_container">
+function showMyShop() {
+    let id = localStorage.getItem('id');
+    $.ajax({
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        },
+        type: "GET",
+        url: "http://localhost:8081/products/find-my-shop/" + id,
+        success: function (data) {
+            console.log(id)
+            let html = `<div class="super_container">
     <!-- Header -->
     <header class="header trans_300">
         <!-- Top Navigation -->
@@ -40,15 +49,16 @@ function loadUserHome() {
                 <div class="row">
                     <div class="col-lg-12 text-right">
                         <div class="logo_container">
-                            <a onclick="loadUserHome()">Sam's Shop</a>
+                            <a onclick="loadUserHome()">colo<span>shop</span></a>
                         </div>
                         <nav class="navbar">
                             <ul class="navbar_menu">
-                                <li><a onclick="loadUserHome()">Home</a></li>
-                                <li><a onclick="showMyShop()">My shop</a></li>
+                                <li><a onclick="loadUserHome()">home</a></li>
+                                <li><a href="/products?action=sell-list">my shop</a></li>
+                                <li><a href="/order-details">single product</a></li>
                             </ul>
                             <ul class="navbar_user">
-                                <li> <a><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                                <li> <a onclick=""><i class="fa fa-search" aria-hidden="true"></i></a></li>
                                 <li><a href=""><i class="fa fa-user" aria-hidden="true"></i></a></li>
                                 <li class="checkout">
 
@@ -69,9 +79,8 @@ function loadUserHome() {
 
     </header>
 
-    <div class="fs_menu_overlay"></div>
-    
-    <div class="container product_section_container">
+        <div class="fs_menu_overlay"></div>
+        <div class="container product_section_container">
     <div class="row">
         <div class="sidebar">
             <div class="sidebar_section" style="padding: 10px">
@@ -110,62 +119,38 @@ function loadUserHome() {
             
             </div>
     </div>
-    
-        <div class="col product_section clearfix" style="margin-top: 0">
-
-            <!-- Slider -->
-
-            <div class="main_slider" style="background-image:url(/user/images/single_1.jpg); margin-top: 0">
-                <div class="container fill_height">
-                    <div class="row align-items-center fill_height"  style="">
-                        <div class="col">
-                            <div class="main_slider_content">
-                                <h6>Spring / Summer Collection 2017</h6>
-                                <h1>Get up to 30% Off New Arrivals</h1>
-                                <div class="red_button shop_now_button"><a href="/products?action=buy-list">shop now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div id="wrapper">
+                <div class="headline">
+                    <h2>Product List</h2>
+                    <button class="btn btn-success" onclick="showAddProductForm()">Add product</button>
                 </div>
+                <ul class="products">`
+            for (let i = 0; i < data.length; i++) {
+                if(data[i].user.id == id) {
+                    html += `<li>
+                            <div class="product_details">
+                                <div>
+                                    <div class="product-top" style="text-align: center">
+                                        <div>
+                                            <img style="height: 240px; width: 200px" src="${data[i].img}" alt="">
+                                        </div>
+                                        <div class="product-info"><b>${data[i].name}</b></div>
+                                        <div class="product-price"><b>${data[i].price}</b></div>
+                                        <div class="product-info"><b>${data[i].description}</b></div>
+                                        <div class="product-info"><b>${data[i].quantity}</b></div>
+                                        <div class="product-info"><b>${data[i].category.name}</b></div>
+                                        <button onclick="showEditForm(${data[i].id})" class="btn btn-primary" style="width: 10px;height: 10px">Edit</button>
+                                        <button onclick="deleteProduct(${data[i].id})" class="btn btn-danger" style="width: 10px;height: 10px">Delete</button>
+                                </div>
+                            </div>
+                            </div>
+                        </li>`
+                }
+            }
+            html += `</ul>
             </div>
-
-            <!-- Banner -->
-
-            <div class="banner">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="banner_item align-items-center"
-                                 style="background-image:url(/user/images/banner_1.jpg)">
-                                <div class="banner_category">
-                                    <a onclick="showWomenProduct()">Women's</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="banner_item align-items-center"
-                                 style="background-image:url(/user/images/banner_2.jpg)">
-                                <div class="banner_category">
-                                    <a onclick="showAccessoryProduct()">Accessories's</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="banner_item align-items-center"
-                                 style="background-image:url(/user/images/banner_3.jpg)">
-                                <div class="banner_category">
-                                    <a onclick="showMenProduct()">Men's</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
-</div>
-    <!-- Benefit -->
-
+    </div>
     <div class="benefit">
         <div class="container">
             <div class="row benefit_row">
@@ -206,8 +191,6 @@ function loadUserHome() {
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
     
     <!-- Newsletter -->
 
@@ -230,6 +213,8 @@ function loadUserHome() {
                 </div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 
     <!-- Footer -->
@@ -266,11 +251,10 @@ function loadUserHome() {
                 </div>
             </div>
         </div>
-    </footer>
-
-</div>`
-    display.innerHTML = str
+    </footer>`
+            listWomenProduct.innerHTML = html
+        }, error: function (data) {
+            console.log(data)
+        }
+    })
 }
-
-
-
