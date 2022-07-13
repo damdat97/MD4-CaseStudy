@@ -238,29 +238,33 @@ function updateShoppingCart(id) {
 }
 
 function deleteShoppingCart(id) {
-    $.ajax({
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('token')
-        }, type: "DELETE", url: "http://localhost:8081/shopping-cart/cart/" + id,
-        success: function (data) {
-            console.log(data);
-            alert("Delete success");
-            showShoppingCart();
-        }
-    })
+    if (confirm("Are you sure you want to delete this order?")) {
+        $.ajax({
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }, type: "DELETE", url: "http://localhost:8081/shopping-cart/cart/" + id,
+            success: function (data) {
+                console.log(data);
+                alert("Delete success");
+                showShoppingCart();
+            }
+        })
+    }
 }
 
 function paymentShoppingCart(id) {
-    $.ajax({
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('token')
-        }, type: "DELETE", url: "http://localhost:8081/shopping-cart/order/" + id,
-        success: function (data) {
-            console.log(data);
-            alert("Order success");
-            showShoppingCart();
-        }
-    })
+    if (confirm("Are you sure you want to order?")) {
+        $.ajax({
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }, type: "DELETE", url: "http://localhost:8081/shopping-cart/order/" + id,
+            success: function (data) {
+                console.log(data);
+                alert("Order success");
+                showShoppingCart();
+            }
+        })
+    }
 }
 
 function showEditCart(idCartItem) {
@@ -375,7 +379,7 @@ function showEditCart(idCartItem) {
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
-                    <h3 class="page-title">Edit Shopping Cart <i class="fa-solid fa-pen-to-square" style="margin-left: 10px"></i></h3>
+                    <h3 class="page-title">Edit order information <i class="fa-solid fa-pen-to-square" style="margin-left: 10px"></i></h3>
                 </div>
                 <div class="row">
                     <div class="col-12 grid-margin">

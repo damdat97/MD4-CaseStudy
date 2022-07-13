@@ -1,5 +1,29 @@
 let display1 = document.getElementById("content");
 
+function listProduct() {
+    $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        },
+        type: "GET",
+        url: "http://localhost:8081/products",
+        success: function (data) {
+            let str = "";
+            for (let i = 0; i < data.length; i++) {
+                str += ` ${data[i].name},${data[i].description},${data[i].price},${data[i].quantity},${data[i].category.name}, <img src="${data[i].img}" style="width: 50px; height: 50px">
+                <button onclick="showEditForm(${data[i].id})">Edit</button>
+                <button onclick="deleteProduct(${data[i].id})">Delete</button>
+                <button onclick="addToCart(${data[i].id})">Add To Cart</button>
+                <br>`
+            }
+            display1.innerHTML = str;
+        }
+    })
+
+}
+
 function showAddProductForm() {
 
     let html = `
@@ -18,6 +42,7 @@ function showAddProductForm() {
                         <input type='number' id="price" placeholder="Price"> 
                         <input type='number' id="quantity" placeholder="Quantity"> 
                         <input type="file" value="upload" accept=".jpg;.gif" id="fileButton" onchange="upload(event)"></div>
+                        <label>Category:</label>
                         <select id="category">`
     $.ajax({
         headers: {
@@ -69,7 +94,6 @@ function saveProduct() {
             id: userId
         }
     }
-    console.log(product)
     $.ajax({
         headers: {
             'Accept': 'application/json',
@@ -175,7 +199,6 @@ function editProduct() {
             id: userId
         }
     }
-    console.log(product)
     $.ajax({
         type:"PUT",
         headers:{
@@ -197,7 +220,7 @@ function editProduct() {
 }
 
 function deleteProduct(id){
-    if (confirm("Do you want to delete this product???")) {
+    if (confirm("Are you sure you want to delete this product ?")) {
         $.ajax({
 
             headers:{
