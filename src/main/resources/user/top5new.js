@@ -82,8 +82,8 @@ function showNewArrival() {
         <div class="fs_menu_overlay"></div>
         <div class="container product_section_container">
     <div class="row">
-        <div class="sidebar">
-            <div class="sidebar_section" style="padding: 10px">
+        <div class="sidebar" style="z-index: 0">
+            <div class="sidebar_section" style="padding: 10px;">
                 <div class="sidebar_title">
                     <h5>Category</h5>
                 </div>

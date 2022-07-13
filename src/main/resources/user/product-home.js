@@ -35,7 +35,7 @@ function loadUserHome() {
 
         <!-- Main Navigation -->
 
-        <div class="main_nav_container">
+        <div class="main_nav_container" style="z-index: 5">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-right">
@@ -73,8 +73,8 @@ function loadUserHome() {
     
     <div class="container product_section_container">
     <div class="row">
-        <div class="sidebar">
-            <div class="sidebar_section" style="padding: 10px">
+        <div class="sidebar" style="z-index: 0">
+            <div class="sidebar_section" style="padding: 10px;">
                 <div class="sidebar_title">
                     <h5>Category</h5>
                 </div>
