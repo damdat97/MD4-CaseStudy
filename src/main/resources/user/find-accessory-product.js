@@ -155,7 +155,7 @@ function showAccessoryProduct() {
                                         <div class="product-info"><b>${data[i].quantity}</b></div>
                                         <div class="product-info"><b>${data[i].category.name}</b></div>
                                 </div>
-                                <div class="btn-primary" style="text-align: center"><a href="/checkout/responsive-shopping-cart-layout/check-out.jsp" ><b>Add to cart</b></a></div>
+                                <div class="btn-primary" style="text-align: center"><a onclick="addToCart(${data[i].id})"><b>Add to cart</b></a></div>
                             </div>
                             </div>
                         </li>`
