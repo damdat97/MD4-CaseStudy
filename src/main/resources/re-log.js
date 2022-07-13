@@ -80,13 +80,13 @@ function register() {
     let password = document.getElementById("passwordRegister").value;
     let confirmPassword = document.getElementById("confirmPassword").value;
     if (!username.match(usernamePattern)) {
-        document.getElementById("errorUn").innerHTML = `Vui lòng nhập ít nhất 3 kí tự!`
+        document.getElementById("errorUn").innerHTML = `Please enter at least 3 characters!`
     }
     if (!password.match(passwordPattern)) {
-        document.getElementById("errorPw").innerHTML = `Vui lòng nhập ít nhất 3 kí tự!`
+        document.getElementById("errorPw").innerHTML = `Please enter at least 3 characters!`
     }
     if (confirmPassword !== password) {
-        document.getElementById("errorCfw").innerHTML = `Nhập đúng mật khẩu bạn vừa nhập!`
+        document.getElementById("errorCfw").innerHTML = `Enter the correct password you just entered!`
     }
 
     if (username.match(usernamePattern) && password.match(passwordPattern) && confirmPassword === password) {
@@ -146,10 +146,10 @@ function login() {
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
     if (!username.match(usernamePattern)) {
-        document.getElementById("usnLogin").innerHTML = `Vui lòng nhập ít nhất 3 kí tự!`
+        document.getElementById("usnLogin").innerHTML = `Please enter at least 3 characters!`
     }
     if (!password.match(passwordPattern)) {
-        document.getElementById("passLogin").innerHTML = `Vui lòng nhập ít nhất 3 kí tự!`
+        document.getElementById("passLogin").innerHTML = `Please enter at least 3 characters!`
     }
     if (username.match(usernamePattern) && password.match(passwordPattern)) {
 

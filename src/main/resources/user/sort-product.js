@@ -55,15 +55,14 @@ function filterByPrice() {
                         <nav class="navbar">
                             <ul class="navbar_menu">
                                 <li><a onclick="loadUserHome()">home</a></li>
-                                <li><a href="/products?action=sell-list">my shop</a></li>
-                                <li><a href="/order-details">single product</a></li>
+                                <li><a onclick="showMyShop()">my shop</a></li>
                             </ul>
                             <ul class="navbar_user">
                                 <li> <a onclick=""><i class="fa fa-search" aria-hidden="true"></i></a></li>
                                 <li><a href=""><i class="fa fa-user" aria-hidden="true"></i></a></li>
                                 <li class="checkout">
 
-                                    <a href="/orders?action=show">
+                                    <a onclick="showShoppingCart()">
                                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                         <span id="checkout_items" class="checkout_items"></span>
                                     </a>

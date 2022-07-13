@@ -15,7 +15,7 @@ function listProduct() {
                 str += ` ${data[i].name},${data[i].description},${data[i].price},${data[i].quantity},${data[i].category.name}, <img src="${data[i].img}" style="width: 50px; height: 50px">
                 <button onclick="showEditForm(${data[i].id})">Edit</button>
                 <button onclick="deleteProduct(${data[i].id})">Delete</button>
-                <button onclick="AddToCart(${data[i].id})">Add To Cart</button>
+                <button onclick="addToCart(${data[i].id})">Add To Cart</button>
                 <br>`
             }
             display1.innerHTML = str;
@@ -85,12 +85,16 @@ function saveProduct() {
     let quantity = document.getElementById("quantity").value;
     let file = localStorage.getItem(key);
     let categoryId = document.getElementById("category").value;
+    let userId = localStorage.getItem('id');
     let product = {
         name: name,
         description: description,
         price: price,
         quantity: quantity,
         img: file,
+        user: {
+            id: userId
+        },
         category: {
             id: categoryId
         }
@@ -198,6 +202,9 @@ function editProduct() {
         price : price,
         quantity: quantity ,
         img: img,
+        userId: {
+            id: localStorage.getItem('id')
+        },
         category: {
             id: categoryId
         }
@@ -223,7 +230,7 @@ function editProduct() {
 }
 
 function deleteProduct(id){
-    if (confirm("Bạn có chắc chắn muốn xoá sản phẩm ko ???")) {
+    if (confirm("Are you sure you want to delete this product ?")) {
         $.ajax({
 
             headers:{

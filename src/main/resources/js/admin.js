@@ -143,11 +143,11 @@ function loadUserList() {
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Tên</th>
-                                        <th>Loại tài khoản</th>
+                                        <th>Name</th>
+                                        <th>Permission</th>
                                         <th>Phone</th>
-                                        <th>Trang thai</th>
-                                        <th style="text-align: center">Tùy chọn</th>
+                                        <th>Status</th>
+                                        <th style="text-align: center">Option</th>
                                     </tr>
                                     </thead>
                                     <tbody>`
@@ -299,11 +299,11 @@ function findByName() {
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Tên</th>
-                                        <th>Loại tài khoản</th>
+                                        <th>Name</th>
+                                        <th>Permission</th>
                                         <th>Phone</th>
-                                        <th>Trang thai</th>
-                                        <th colspan="3" style="text-align: center">Tùy chọn</th>
+                                        <th>Status</th>
+                                        <th colspan="3" style="text-align: center">Option</th>
                                     </tr>
                                     </thead>     
                                     <tr>`
@@ -330,10 +330,10 @@ function findByName() {
                                             <td>`
 
                                     if (data[i].status === true) {
-                                        str += `<p class="badge badge-success">Đang mở</p>`
+                                        str += `<p class="badge badge-success">Connected</p>`
                                     }
                                     if (data[i].status === false) {
-                                        str += `<p class="badge badge-danger">Đang bị khóa</p>
+                                        str += `<p class="badge badge-danger">Locked</p>
                                                                 </td>`
                                     }
                                     str += `
@@ -446,7 +446,7 @@ function editUser(id) {
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
-                    <h3 class="page-title">Sửa chức năng người dùng <i class="fa-solid fa-pen-to-square" style="margin-left: 10px"></i></h3>
+                    <h3 class="page-title">Edit user information <i class="fa-solid fa-pen-to-square" style="margin-left: 10px"></i></h3>
                 </div>
                 <div class="row">
                     <div class="col-12 grid-margin">
@@ -461,12 +461,12 @@ function editUser(id) {
                     url: 'http://localhost:8081/admin/users/' + id,
                     success: function (data) {
                         console.log(data)
-                        str += `<p class="card-description"> Thông tin cá nhân </p>
+                        str += `<p class="card-description"> Personal information </p>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group row">
                                             <input type="hidden" id="idEdit" value="${data.id}">
-                                                <label class="col-sm-3 col-form-label">Tên: </label>
+                                                <label class="col-sm-3 col-form-label">Name: </label>
                                                 <div class="col-sm-9">
                                                     <input type="text" id="nameEdit" class="form-control" value="${data.name}"/>
                                                 </div>
@@ -476,7 +476,7 @@ function editUser(id) {
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Số điện thoại</label>
+                                                <label class="col-sm-3 col-form-label">Phone</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" id="phoneNumberEdit" value="${data.phone}"/>
                                                 </div>
@@ -486,7 +486,7 @@ function editUser(id) {
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Tên đăng nhập</label>
+                                                <label class="col-sm-3 col-form-label">Username</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" id="usernameEdit" value="${data.username}"/>
                                                 </div>
@@ -494,7 +494,7 @@ function editUser(id) {
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Mật khẩu</label>
+                                                <label class="col-sm-3 col-form-label">Password</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" id="passwordEdit" value="${data.password}"/>
                                                 </div>
@@ -506,7 +506,7 @@ function editUser(id) {
                                             <div class="form-group row">
                                             <input type="hidden" value="${data.status}" id="statusEdit">
                                             <input type="hidden" value="${data.confirmPassword}" id="confirmPasswordEdit">
-                                                <label class="col-sm-3 col-form-label">Loại tài khoản</label>
+                                                <label class="col-sm-3 col-form-label">Permission</label>
                                                 <div class="col-sm-9">
                                                     <select class="form-control" id="roleEdit">`
                                                 $.ajax({
@@ -530,7 +530,7 @@ function editUser(id) {
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <button type="submit" class="btn btn-primary mr-2" onclick="edit()">Lưu</button>
+                                        <button type="submit" class="btn btn-primary mr-2" onclick="edit()">Save</button>
                                     </div>
                             </div>
                         </div>

@@ -251,16 +251,18 @@ function deleteShoppingCart(id) {
 }
 
 function paymentShoppingCart(id) {
-    $.ajax({
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('token')
-        }, type: "DELETE", url: "http://localhost:8081/shopping-cart/order/" + id,
-        success: function (data) {
-            console.log(data);
-            alert("Order success");
-            showShoppingCart();
-        }
-    })
+    if (confirm("Are you sure you want to order?")) {
+        $.ajax({
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }, type: "DELETE", url: "http://localhost:8081/shopping-cart/order/" + id,
+            success: function (data) {
+                console.log(data);
+                alert("Order success");
+                showShoppingCart();
+            }
+        })
+    }
 }
 
 function showEditCart(idCartItem) {
@@ -375,7 +377,7 @@ function showEditCart(idCartItem) {
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
-                    <h3 class="page-title">Sửa thông tin đơn hàng <i class="fa-solid fa-pen-to-square" style="margin-left: 10px"></i></h3>
+                    <h3 class="page-title">Edit order information <i class="fa-solid fa-pen-to-square" style="margin-left: 10px"></i></h3>
                 </div>
                 <div class="row">
                     <div class="col-12 grid-margin">
@@ -399,7 +401,7 @@ function showEditCart(idCartItem) {
                                         <div class="col-md-6">
                                             <div class="form-group row">
                                             <input type="hidden" id="idProductEdit" value="${data.product.id}">
-                                                <label class="col-sm-3 col-form-label">Tên:</label>
+                                                <label class="col-sm-3 col-form-label">Name:</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" id="nameEdit" class="form-control" value="${data.name}" readonly/>
                                                 </div>
@@ -408,7 +410,7 @@ function showEditCart(idCartItem) {
                                      
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Giá</label>
+                                                <label class="col-sm-3 col-form-label">Price</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" id="priceEdit" class="form-control" value=" ${data.product.price}" readonly/>
                                                 </div>
@@ -416,7 +418,7 @@ function showEditCart(idCartItem) {
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Số lượng</label>
+                                                <label class="col-sm-3 col-form-label">Quantity</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" id="quantityEdit" class="form-control" id="quantityEdit" value="${data.quantity}"/>
                                                 </div>
@@ -424,14 +426,14 @@ function showEditCart(idCartItem) {
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Tổng giá</label>
+                                                <label class="col-sm-3 col-form-label">Total Price</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" value="${data.quantity * data.product.price}" readonly/>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row col-12 d-flex justify-content-center">
-                                            <button type="submit" class="btn btn-primary mr-2" onclick="updateShoppingCart(${data.id})" style="margin-left: 50px">Lưu</button>
+                                            <button type="submit" class="btn btn-primary mr-2" onclick="updateShoppingCart(${data.id})" style="margin-left: 50px">Save</button>
                                         </div>
                                     </div>`
             showAdmin.innerHTML = str
