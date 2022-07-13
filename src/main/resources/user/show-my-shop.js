@@ -1,4 +1,4 @@
-let shopMyShop = document.getElementById('content')
+let showShop = document.getElementById('content')
 
 function showMyShop() {
     let id = localStorage.getItem('id');
@@ -251,7 +251,7 @@ function showMyShop() {
             </div>
         </div>
     </footer>`
-            listWomenProduct.innerHTML = html
+            showShop.innerHTML = html
         }, error: function (data) {
             console.log(data)
         }

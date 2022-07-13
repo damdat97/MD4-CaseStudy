@@ -55,6 +55,7 @@ function saveProduct() {
     let quantity = document.getElementById("quantity").value;
     let file = localStorage.getItem(key);
     let categoryId = document.getElementById("category").value;
+    let userId = localStorage.getItem('id');
     let product = {
         name: name,
         description: description,
@@ -63,8 +64,12 @@ function saveProduct() {
         img: file,
         category: {
             id: categoryId
+        },
+        user: {
+            id: userId
         }
     }
+    console.log(product)
     $.ajax({
         headers: {
             'Accept': 'application/json',
@@ -156,7 +161,8 @@ function editProduct() {
     let quantity = document.getElementById("quantityEdit").value;
     let img = localStorage.getItem(key);
     let categoryId = document.getElementById("category").value;
-    let house = {
+    let userId = localStorage.getItem('id')
+    let product = {
         name: name,
         description : description,
         price : price,
@@ -164,6 +170,9 @@ function editProduct() {
         img: img,
         category: {
             id: categoryId
+        },
+        user: {
+            id: userId
         }
     }
     $.ajax({
@@ -174,7 +183,7 @@ function editProduct() {
             'Content-Type': 'application/json'
         },
         url:"http://localhost:8081/products/"+id,
-        data :JSON.stringify(house),
+        data :JSON.stringify(product),
         success: function () {
             $('#editModal').modal('hide');
             showMyShop()
