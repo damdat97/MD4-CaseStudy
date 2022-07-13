@@ -72,4 +72,10 @@ public class ShoppingCartController {
         shoppingCartService.remove(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @DeleteMapping({"/order/{id}"})
+    public ResponseEntity<CartItem> paymentShoppingCart(@PathVariable Long id) {
+        shoppingCartService.remove(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

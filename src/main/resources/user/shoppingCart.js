@@ -153,11 +153,15 @@ function showShoppingCart() {
                          </tr>
                   </tbody>
               </table>
+              <div class="row col-12 d-flex justify-content-center">
+                         <button type="submit" class="btn btn-primary mr-2" onclick="paymentShoppingCart(${data[i].id})" style="margin-left: 50px">Order</button>
+              </div>
                </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
                 <footer class="footer">
                     <div class="d-sm-flex justify-content-center justify-content-sm-between">
                         <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2017 <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap Dash</a>. All rights reserved.</span>
@@ -241,6 +245,19 @@ function deleteShoppingCart(id) {
         success: function (data) {
             console.log(data);
             alert("Delete success");
+            showShoppingCart();
+        }
+    })
+}
+
+function paymentShoppingCart(id) {
+    $.ajax({
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }, type: "DELETE", url: "http://localhost:8081/shopping-cart/order/" + id,
+        success: function (data) {
+            console.log(data);
+            alert("Order success");
             showShoppingCart();
         }
     })
