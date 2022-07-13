@@ -75,4 +75,9 @@ public class ProductController {
     public ResponseEntity<Iterable<Product>> showShoppingCart(@PathVariable Long id) {
         return new ResponseEntity<>(productService.findByUserId(id), HttpStatus.OK);
     }
+
+    @GetMapping({"/find-shop-by-name"})
+    public ResponseEntity<Iterable<Product>> findShopByName(@RequestParam(value = "name") String name) {
+        return new ResponseEntity<>(productService.findShopByName(name), HttpStatus.OK);
+    }
 }

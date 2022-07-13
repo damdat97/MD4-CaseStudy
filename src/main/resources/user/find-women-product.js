@@ -48,12 +48,12 @@ function showWomenProduct() {
                 <div class="row">
                     <div class="col-lg-12 text-right">
                         <div class="logo_container">
-                            <a onclick="loadUserHome()">colo<span>shop</span></a>
+                            <a onclick="loadUserHome()">Sam's<span> Shop</span></a>
                         </div>
                         <nav class="navbar">
                             <ul class="navbar_menu">
-                                <li><a onclick="loadUserHome()">home</a></li>
-                                <li><a onclick="showMyShop()">my shop</a></li>
+                                <li><a onclick="loadUserHome()">Home</a></li>
+                                <li><a onclick="showMyShop()">My shop</a></li>
                             </ul>
                             <ul class="navbar_user">
                                 <li> <a onclick=""><i class="fa fa-search" aria-hidden="true"></i></a></li>

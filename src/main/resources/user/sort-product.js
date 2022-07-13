@@ -50,20 +50,19 @@ function filterByPrice() {
                 <div class="row">
                     <div class="col-lg-12 text-right">
                         <div class="logo_container">
-                            <a onclick="loadUserHome()">colo<span>shop</span></a>
+                            <a onclick="loadUserHome()">Sam's<span> Shop</span></a>
                         </div>
                         <nav class="navbar">
                             <ul class="navbar_menu">
-                                <li><a onclick="loadUserHome()">home</a></li>
-                                <li><a href="/products?action=sell-list">my shop</a></li>
-                                <li><a href="/order-details">single product</a></li>
+                                <li><a onclick="loadUserHome()">Home</a></li>
+                                <li><a onclick="showMyShop()">My shop</a></li>
                             </ul>
                             <ul class="navbar_user">
                                 <li> <a onclick=""><i class="fa fa-search" aria-hidden="true"></i></a></li>
                                 <li><a href=""><i class="fa fa-user" aria-hidden="true"></i></a></li>
                                 <li class="checkout">
 
-                                    <a href="/orders?action=show">
+                                    <a onclick="showShoppingCart()">
                                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                         <span id="checkout_items" class="checkout_items"></span>
                                     </a>
@@ -106,8 +105,8 @@ function filterByPrice() {
                         <h5>Filter by Price</h5>
                     </div>
                    
-                        <input type="text" id="amountFrom" style="border:0; color:#ece8e8" placeholder="Amount From">
-                        <input type="text" id="amountTo" style="border:0; color:#fffdfd" placeholder="Amout To">
+                        <input type="text" id="amountFrom" style="border:0; color:#ece8e8" placeholder="From Price">
+                        <input type="text" id="amountTo" style="border:0; color:#fffdfd" placeholder="To Price">
                     
                     <div id="slider-range"></div>
                 <div class="filter_button" onclick="filterByPrice()"><span>filter</span></div>
@@ -119,22 +118,43 @@ function filterByPrice() {
                 </div>
                 <ul class="products">`
             for (let i = 0; i < data.length; i++) {
-                html += `<li>
+                if (data[i].user.id == id) {
+                    html += `<li>
                             <div class="product_details">
                                 <div>
                                     <div class="product-top" style="text-align: center">
                                         <div>
                                             <img style="height: 240px; width: 200px" src="${data[i].img}" alt="">
                                         </div>
-                                        <div class="product-info"><b>${data[i].name}</b></div>
-                                        <div class="product-price"><b>${data[i].price}</b></div>
-                                        <div class="product-info"><b>${data[i].description}</b></div>
-                                        <div class="product-info"><b>${data[i].quantity}</b></div>
+                                        <div class="product-info"><b>Name: ${data[i].name}</b></div>
+                                        <div class="product-price"><b>Price: ${data[i].price}</b></div>
+                                        <div class="product-info"><b>Description: ${data[i].description}</b></div>
+                                        <div class="product-info"><b>Quantity ${data[i].quantity}</b></div>
+                                        <div class="product-info"><b>Category ${data[i].category.name}</b></div>
                                 </div>
-                                <div class="btn-primary" style="text-align: center"><a href="/checkout/responsive-shopping-cart-layout/check-out.jsp" ><b>Add to cart</b></a></div>
                             </div>
                             </div>
                         </li>`
+                }
+                if (data[i].user.id != id) {
+                    html += `<li>
+                            <div class="product_details">
+                                <div>
+                                    <div class="product-top" style="text-align: center">
+                                        <div>
+                                            <img style="height: 240px; width: 200px" src="${data[i].img}" alt="">
+                                        </div>
+                                        <div class="product-info"><b>Name: ${data[i].name}</b></div>
+                                        <div class="product-price"><b>Price: ${data[i].price}</b></div>
+                                        <div class="product-info"><b>Description: ${data[i].description}</b></div>
+                                        <div class="product-info"><b>Quantity ${data[i].quantity}</b></div>
+                                        <div class="product-info"><b>Category ${data[i].category.name}</b></div>
+                                </div>
+                                <div class="btn-primary" style="text-align: center"><a onclick="addToCart(${data[i].id})"><b>Add to cart</b></a></div>
+                            </div>
+                            </div>
+                        </li>`
+                }
             }
             html += `</ul>
             </div>

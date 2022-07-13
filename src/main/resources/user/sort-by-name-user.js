@@ -1,4 +1,4 @@
-let showShop = document.getElementById("content")
+let showShopByName = document.getElementById("content")
 
 function findShopByName() {
     let id = localStorage.getItem('id');
@@ -268,7 +268,7 @@ function findShopByName() {
             </div>
         </div>
     </footer>`
-            showShop.innerHTML = html
+            showShopByName.innerHTML = html
         }, error: function (data) {
             console.log(data)
         }

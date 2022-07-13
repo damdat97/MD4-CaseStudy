@@ -125,7 +125,7 @@ function showShoppingCart() {
                                         <th style="text-align: center">Image</th>
                                         <th style="text-align: center">Price</th>
                                         <th style="text-align: center">Quantity</th>
-                                        <th style="text-align: center">Total Amount</th>
+                                        <th style="text-align: center">Total Price</th>
                                     </tr>
                                     </thead>
                                     <tbody>`;
@@ -357,8 +357,8 @@ function showEditCart(idCartItem) {
                 <div class="sidebar_title">
                     <h5>Filter by Price</h5>
                 </div>
-                    <input type="number" id="amountFrom" style="border:0; color:#ece8e8" placeholder="Amount From">
-                    <input type="number" id="amountTo" style="border:0; color:#fffdfd" placeholder="Amount To">
+                    <input type="number" id="amountFrom" style="border:0; color:#ece8e8" placeholder="From Price">
+                    <input type="number" id="amountTo" style="border:0; color:#fffdfd" placeholder="To Price">
                 <div class="filter_button" onclick="filterByPrice()"><span>Filter</span></div>
             
             </div>
@@ -424,7 +424,7 @@ function showEditCart(idCartItem) {
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Total Amount</label>
+                                                <label class="col-sm-3 col-form-label">Total Price</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" value="${data.quantity * data.product.price}" readonly/>
                                                 </div>
@@ -434,7 +434,7 @@ function showEditCart(idCartItem) {
                                             <button type="submit" class="btn btn-primary mr-2" onclick="updateShoppingCart(${data.id})" style="margin-left: 50px">Save</button>
                                         </div>
                                     </div>`
-            showAdmin.innerHTML = str
+            showCart.innerHTML = str
         }
     })
 }

@@ -29,4 +29,8 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     Iterable<Product> findByPrice(@Param("from") int price, @Param("to") int to);
 
     Iterable<Product> findByUserId(Long id);
+
+    @Query(value = "select * from product p join user_table u on p.user_id = u.id\n" +
+            "where lower(u.name) like concat('%', lower(:name), '%');", nativeQuery = true)
+    Iterable<Product> findShopByName(@Param("name") String name);
 }

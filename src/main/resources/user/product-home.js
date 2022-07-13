@@ -96,8 +96,8 @@ function loadUserHome() {
                     <h5>Filter by Price</h5>
                 </div>
                     <input type="number" id="amountFrom" style="border:0; color:#ece8e8" placeholder="From Product">
-                    <input type="number" id="amountTo" style="border:0; color:#fffdfd" placeholder="Amount To">
-                <div class="filter_button" onclick="filterByPrice()"><span>filter</span></div>
+                    <input type="number" id="amountTo" style="border:0; color:#fffdfd" placeholder="To Product">
+                <div class="filter_button" onclick="filterByPrice()"><span>Filter</span></div>
             
             </div>
             

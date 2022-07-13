@@ -375,7 +375,7 @@ function editUser(id) {
     let str = `<div class="container-scroller">
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
-            <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome Sam's dashboard!</h5>
+            <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome Sam's Dashboard!</h5>
             <ul class="navbar-nav navbar-nav-right ml-auto">
                     <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
                     <input type="text" id="name" placeholder="Name"> 
@@ -429,7 +429,7 @@ function editUser(id) {
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
-                    <h3 class="page-title">Sửa chức năng người dùng <i class="fa-solid fa-pen-to-square" style="margin-left: 10px"></i></h3>
+                    <h3 class="page-title">Edit Function User <i class="fa-solid fa-pen-to-square" style="margin-left: 10px"></i></h3>
                 </div>
                 <div class="row">
                     <div class="col-12 grid-margin">
@@ -444,12 +444,12 @@ function editUser(id) {
                     url: 'http://localhost:8081/admin/users/' + id,
                     success: function (data) {
                         console.log(data)
-                        str += `<p class="card-description"> Thông tin cá nhân </p>
+                        str += `<p class="card-description"> Personal Information </p>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group row">
                                             <input type="hidden" id="idEdit" value="${data.id}">
-                                                <label class="col-sm-3 col-form-label">Tên: </label>
+                                                <label class="col-sm-3 col-form-label">Name: </label>
                                                 <div class="col-sm-9">
                                                     <input type="text" id="nameEdit" class="form-control" value="${data.name}"/>
                                                 </div>
@@ -459,7 +459,7 @@ function editUser(id) {
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Số điện thoại</label>
+                                                <label class="col-sm-3 col-form-label">Phone Number:</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" id="phoneNumberEdit" value="${data.phone}"/>
                                                 </div>
@@ -469,7 +469,7 @@ function editUser(id) {
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Tên đăng nhập</label>
+                                                <label class="col-sm-3 col-form-label">Username: </label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" id="usernameEdit" value="${data.username}"/>
                                                 </div>
@@ -488,7 +488,7 @@ function editUser(id) {
                                             <div class="form-group row">
                                             <input type="hidden" value="${data.status}" id="statusEdit">
                                             <input type="hidden" value="${data.confirmPassword}" id="confirmPasswordEdit">
-                                                <label class="col-sm-3 col-form-label">Loại tài khoản</label>
+                                                <label class="col-sm-3 col-form-label">Role</label>
                                                 <div class="col-sm-9">
                                                     <select class="form-control" id="roleEdit">`
                                                 $.ajax({
@@ -512,7 +512,7 @@ function editUser(id) {
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <button type="submit" class="btn btn-primary mr-2" onclick="edit()">Lưu</button>
+                                        <button type="submit" class="btn btn-primary mr-2" onclick="edit()">Save</button>
                                     </div>
                             </div>
                         </div>
@@ -585,6 +585,7 @@ function lockedUser(id) {
             type: 'GET',
             url: 'http://localhost:8081/admin/users/locked-user/' + id,
             success: function () {
+                alert("Locked this user done!")
                 loadUserList()
             },
             error: function (error) {

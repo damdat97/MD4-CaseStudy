@@ -61,4 +61,9 @@ public class ProductServiceImpl implements ProductService {
     public Iterable<Product> findByUserId(Long id) {
         return productRepository.findByUserId(id);
     }
+
+    @Override
+    public Iterable<Product> findShopByName(String name) {
+        return productRepository.findShopByName(name);
+    }
 }

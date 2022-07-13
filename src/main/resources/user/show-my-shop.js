@@ -144,6 +144,8 @@ function showMyShop() {
                             </div>
                             </div>
                         </li>`
+                }if (data[i].user.id != id) {
+                    html += ``
                 }
             }
             html += `</ul>

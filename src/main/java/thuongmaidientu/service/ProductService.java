@@ -15,4 +15,6 @@ public interface ProductService extends GeneralService<Product>{
     Iterable<Product> findByPrice(int from, int to);
 
     Iterable<Product> findByUserId(Long id);
+
+    Iterable<Product> findShopByName(String name);
 }
