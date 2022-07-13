@@ -63,7 +63,7 @@ function upload(e) {
             // save this link somewhere, e.g. put it in an input field
             let downloadURL = uploadTask.snapshot.downloadURL;
             localStorage.setItem(key , downloadURL)
-            alert(downloadURL)
+            alert("Upload image done!")
             let divLocation = document.getElementById("imgDiv");
             let imgElement = document.createElement("image");
             imgElement.src = downloadURL

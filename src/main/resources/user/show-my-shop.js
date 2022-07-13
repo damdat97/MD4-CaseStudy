@@ -49,12 +49,12 @@ function showMyShop() {
                 <div class="row">
                     <div class="col-lg-12 text-right">
                         <div class="logo_container">
-                            <a onclick="loadUserHome()">colo<span>shop</span></a>
+                            <a onclick="loadUserHome()">Sam's <span> Shop</span></a>
                         </div>
                         <nav class="navbar">
                             <ul class="navbar_menu">
-                                <li><a onclick="loadUserHome()">home</a></li>
-                                <li><a onclick="showMyShop()">my shop</a></li>
+                                <li><a onclick="loadUserHome()">Home</a></li>
+                                <li><a onclick="showMyShop()">My shop</a></li>
                             </ul>
                             <ul class="navbar_user">
                                 <li> <a onclick=""><i class="fa fa-search" aria-hidden="true"></i></a></li>
@@ -103,9 +103,9 @@ function showMyShop() {
                 <div class="sidebar_title">
                     <h5>Filter by Price</h5>
                 </div>
-                    <input type="number" id="amountFrom" style="border:0; color:#ece8e8" placeholder="Amount From">
-                    <input type="number" id="amountTo" style="border:0; color:#fffdfd" placeholder="Amount To">
-                <div class="filter_button" onclick="filterByPrice()"><span>filter</span></div>
+                    <input type="number" id="amountFrom" style="border:0; color:#ece8e8" placeholder="From Price">
+                    <input type="number" id="amountTo" style="border:0; color:#fffdfd" placeholder="To Price">
+                <div class="filter_button" onclick="filterByPrice()"><span>Filter</span></div>
             
             </div>
             
@@ -133,11 +133,11 @@ function showMyShop() {
                                         <div>
                                             <img style="height: 240px; width: 200px" src="${data[i].img}" alt="">
                                         </div>
-                                        <div class="product-info"><b>${data[i].name}</b></div>
-                                        <div class="product-price"><b>${data[i].price}</b></div>
-                                        <div class="product-info"><b>${data[i].description}</b></div>
-                                        <div class="product-info"><b>${data[i].quantity}</b></div>
-                                        <div class="product-info"><b>${data[i].category.name}</b></div>
+                                        <div class="product-info"><b>Name: ${data[i].name}</b></div>
+                                        <div class="product-price"><b>Price: ${data[i].price}</b></div>
+                                        <div class="product-info"><b>Description: ${data[i].description}</b></div>
+                                        <div class="product-info"><b>Quantity ${data[i].quantity}</b></div>
+                                        <div class="product-info"><b>Category ${data[i].category.name}</b></div>
                                         <button onclick="showEditForm(${data[i].id})" class="btn btn-primary" style="width: 10px;height: 10px">Edit</button>
                                         <button onclick="deleteProduct(${data[i].id})" class="btn btn-danger" style="width: 10px;height: 10px">Delete</button>
                                 </div>
@@ -166,7 +166,7 @@ function showMyShop() {
                     <div class="benefit_item d-flex flex-row align-items-center">
                         <div class="benefit_icon"><i class="fa fa-money" aria-hidden="true"></i></div>
                         <div class="benefit_content">
-                            <h6>cach on delivery</h6>
+                            <h6>Catch on delivery</h6>
                             <p>The Internet Tend To Repeat</p>
                         </div>
                     </div>

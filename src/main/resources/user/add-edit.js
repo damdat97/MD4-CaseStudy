@@ -1,29 +1,5 @@
 let display1 = document.getElementById("content");
 
-function listProduct() {
-    $.ajax({
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('token')
-        },
-        type: "GET",
-        url: "http://localhost:8081/products",
-        success: function (data) {
-            let str = "";
-            for (let i = 0; i < data.length; i++) {
-                str += ` ${data[i].name},${data[i].description},${data[i].price},${data[i].quantity},${data[i].category.name}, <img src="${data[i].img}" style="width: 50px; height: 50px">
-                <button onclick="showEditForm(${data[i].id})">Edit</button>
-                <button onclick="deleteProduct(${data[i].id})">Delete</button>
-                <button onclick="AddToCart(${data[i].id})">Add To Cart</button>
-                <br>`
-            }
-            display1.innerHTML = str;
-        }
-    })
-
-}
-
 function showAddProductForm() {
 
     let html = `
@@ -37,17 +13,11 @@ function showAddProductForm() {
                 </button>
             </div>
             <div class="modal-body">     
-                        <label>Name:</label>
-                        <input type='text'  id="name" class="form-control" placeholder="Name">
-                        <label>Description:</label>
-                        <input type='text' id="description" class="form-control" placeholder="Description">   
-                        <label>Price:</label>
-                        <input type='number' id="price" class="form-control" placeholder="Price"> 
-                        <label>Quantity:</label>
-                        <input type='number' id="quantity" class="form-control" placeholder="Quantity"> 
-                        <label>Image:</label>
+                        <input type='text'  id="name" placeholder="Name">
+                        <input type='text' id="description" placeholder="Description">   
+                        <input type='number' id="price" placeholder="Price"> 
+                        <input type='number' id="quantity" placeholder="Quantity"> 
                         <input type="file" value="upload" accept=".jpg;.gif" id="fileButton" onchange="upload(event)"></div>
-                        <label>Category:</label>
                         <select id="category">`
     $.ajax({
         headers: {
@@ -126,18 +96,12 @@ function showEditForm(id) {
             </div>
             <div class="modal-body">     
                          <input type="hidden" id="id">
-                        <label>Name:</label>
-                        <input type='text'  id="nameEdit" class="form-control">
-                        <label>Description:</label>
-                        <input type='text' id="descriptionEdit" class="form-control">   
-                        <label>Price:</label>
-                        <input type='number' id="priceEdit" class="form-control"> 
-                        <label>Quantity:</label>
-                        <input type='number' id="quantityEdit" class="form-control"> 
-                        <label>Image:</label>
+                        <input type='text'  id="nameEdit" class="form-control" placeholder="Name">
+                        <input type='text' id="descriptionEdit" class="form-control" placeholder="Description">   
+                        <input type='number' id="priceEdit" class="form-control" placeholder="Price"> 
+                        <input type='number' id="quantityEdit" class="form-control" placeholder="Quantity"> 
                         <div id="old-file"></div>
-                        <input type="file" value="upload" accept=".jpg;.gif" id="fileButton" onchange="upload(event)">            </div>
-                        <label>Category:</label>
+                        <input type="file" value="upload" accept=".jpg;.gif" id="fileButton" onchange="upload(event)">   
                         <select id="category">`
     $.ajax({
         headers: {
@@ -223,7 +187,7 @@ function editProduct() {
 }
 
 function deleteProduct(id){
-    if (confirm("Bạn có chắc chắn muốn xoá sản phẩm ko ???")) {
+    if (confirm("Do you want to delete this product???")) {
         $.ajax({
 
             headers:{
@@ -233,6 +197,7 @@ function deleteProduct(id){
             type: 'DELETE',
             url: 'http://localhost:8081/products/'+id,
             success: function (){
+                alert("Delete successful!")
                 showMyShop()
             },
             error: function (error) {

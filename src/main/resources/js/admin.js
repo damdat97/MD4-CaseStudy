@@ -377,27 +377,10 @@ function editUser(id) {
         <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
             <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome Sam's dashboard!</h5>
             <ul class="navbar-nav navbar-nav-right ml-auto">
-               
+                    <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
                     <input type="text" id="name" placeholder="Name"> 
-                    <button type="submit" onclick="findByName()">Search</button>
-              
-                <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
-                    <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown"
-                       aria-expanded="false">
-                        <span class="font-weight-normal"> Admin </span></a>
-                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                        <div class="dropdown-header text-center">
-                            <p class="mb-1 mt-3">Admin</p>
-                        </div>
-                        <a class="dropdown-item"><i class="dropdown-item-icon icon-user text-primary"></i> My Profile
-                            <span class="badge badge-pill badge-danger">1</span></a>
-                        <a class="dropdown-item"><i class="dropdown-item-icon icon-speech text-primary"></i>
-                            Messages</a>
-                        <a class="dropdown-item"><i class="dropdown-item-icon icon-energy text-primary"></i>
-                            Activity</a>
-                        <a class="dropdown-item"><i class="dropdown-item-icon icon-question text-primary"></i> FAQ</a>
-                        <a href="/login" class="dropdown-item"><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
-                    </div>
+                    <button type="submit" onclick="findByName()" style="margin-right: 10px">Search</button>
+                    <a onclick="logout()">Logout</a><i class="fa-solid fa-arrow-right-from-bracket" style="margin-left: 5px"></i>
                 </li>
             </ul>
             <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
@@ -494,9 +477,8 @@ function editUser(id) {
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Mật khẩu</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="passwordEdit" value="${data.password}"/>
+                                                    <input type="hidden" class="form-control" id="passwordEdit" value="${data.password}"/>
                                                 </div>
                                             </div>
                                         </div>

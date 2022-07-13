@@ -40,12 +40,12 @@ function showShoppingCart() {
                 <div class="row">
                     <div class="col-lg-12 text-right">
                         <div class="logo_container">
-                            <a onclick="loadUserHome()">colo<span>shop</span></a>
+                            <a onclick="loadUserHome()">Sam's<span> Shop</span></a>
                         </div>
                         <nav class="navbar">
                             <ul class="navbar_menu">
-                                <li><a onclick="loadUserHome()">home</a></li>
-                                <li><a onclick="showMyShop()">my shop</a></li>  
+                                <li><a onclick="loadUserHome()">Home</a></li>
+                                <li><a onclick="showMyShop()">My shop</a></li>  
                             </ul>
                             <ul class="navbar_user">
                                 <li> <a onclick=""><i class="fa fa-search" aria-hidden="true"></i></a></li>
@@ -96,7 +96,7 @@ function showShoppingCart() {
                 </div>
                     <input type="number" id="amountFrom" style="border:0; color:#ece8e8" placeholder="Amount From">
                     <input type="number" id="amountTo" style="border:0; color:#fffdfd" placeholder="Amount To">
-                <div class="filter_button" onclick="filterByPrice()"><span>filter</span></div>
+                <div class="filter_button" onclick="filterByPrice()"><span>Filter</span></div>
             
             </div>
             
@@ -121,11 +121,11 @@ function showShoppingCart() {
                                 <table class="table">
                                     <thead>
                                     <tr>
-                                        <th style="text-align: center">Tên</th>
-                                        <th style="text-align: center">Hình ảnh</th>
-                                        <th style="text-align: center">Giá</th>
-                                        <th style="text-align: center">Số Lượng</th>
-                                        <th style="text-align: center">Tổng giá</th>
+                                        <th style="text-align: center">Name</th>
+                                        <th style="text-align: center">Image</th>
+                                        <th style="text-align: center">Price</th>
+                                        <th style="text-align: center">Quantity</th>
+                                        <th style="text-align: center">Total Amount</th>
                                     </tr>
                                     </thead>
                                     <tbody>`;
@@ -164,7 +164,7 @@ function showShoppingCart() {
                     
                 <footer class="footer">
                     <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2017 <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap Dash</a>. All rights reserved.</span>
+                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2022 <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap Dash</a>. All rights reserved.</span>
                         <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="icon-heart text-danger"></i></span>
                     </div>
                 </footer>
@@ -303,12 +303,12 @@ function showEditCart(idCartItem) {
                 <div class="row">
                     <div class="col-lg-12 text-right">
                         <div class="logo_container">
-                            <a onclick="loadUserHome()">colo<span>shop</span></a>
+                            <a onclick="loadUserHome()">Sam's<span> Shop</span></a>
                         </div>
                         <nav class="navbar">
                             <ul class="navbar_menu">
-                                <li><a onclick="loadUserHome()">home</a></li>
-                                <li><a onclick="showMyShop()">my shop</a></li>  
+                                <li><a onclick="loadUserHome()">Home</a></li>
+                                <li><a onclick="showMyShop()">My shop</a></li>  
                             </ul>
                             <ul class="navbar_user">
                                 <li> <a onclick=""><i class="fa fa-search" aria-hidden="true"></i></a></li>
@@ -359,7 +359,7 @@ function showEditCart(idCartItem) {
                 </div>
                     <input type="number" id="amountFrom" style="border:0; color:#ece8e8" placeholder="Amount From">
                     <input type="number" id="amountTo" style="border:0; color:#fffdfd" placeholder="Amount To">
-                <div class="filter_button" onclick="filterByPrice()"><span>filter</span></div>
+                <div class="filter_button" onclick="filterByPrice()"><span>Filter</span></div>
             
             </div>
             
@@ -375,7 +375,7 @@ function showEditCart(idCartItem) {
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
-                    <h3 class="page-title">Sửa thông tin đơn hàng <i class="fa-solid fa-pen-to-square" style="margin-left: 10px"></i></h3>
+                    <h3 class="page-title">Edit Shopping Cart <i class="fa-solid fa-pen-to-square" style="margin-left: 10px"></i></h3>
                 </div>
                 <div class="row">
                     <div class="col-12 grid-margin">
@@ -399,7 +399,7 @@ function showEditCart(idCartItem) {
                                         <div class="col-md-6">
                                             <div class="form-group row">
                                             <input type="hidden" id="idProductEdit" value="${data.product.id}">
-                                                <label class="col-sm-3 col-form-label">Tên:</label>
+                                                <label class="col-sm-3 col-form-label">Name:</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" id="nameEdit" class="form-control" value="${data.name}" readonly/>
                                                 </div>
@@ -408,7 +408,7 @@ function showEditCart(idCartItem) {
                                      
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Giá</label>
+                                                <label class="col-sm-3 col-form-label">Price</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" id="priceEdit" class="form-control" value=" ${data.product.price}" readonly/>
                                                 </div>
@@ -416,7 +416,7 @@ function showEditCart(idCartItem) {
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Số lượng</label>
+                                                <label class="col-sm-3 col-form-label">Quantity</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" id="quantityEdit" class="form-control" id="quantityEdit" value="${data.quantity}"/>
                                                 </div>
@@ -424,14 +424,14 @@ function showEditCart(idCartItem) {
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Tổng giá</label>
+                                                <label class="col-sm-3 col-form-label">Total Amount</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" value="${data.quantity * data.product.price}" readonly/>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row col-12 d-flex justify-content-center">
-                                            <button type="submit" class="btn btn-primary mr-2" onclick="updateShoppingCart(${data.id})" style="margin-left: 50px">Lưu</button>
+                                            <button type="submit" class="btn btn-primary mr-2" onclick="updateShoppingCart(${data.id})" style="margin-left: 50px">Save</button>
                                         </div>
                                     </div>`
             showAdmin.innerHTML = str
