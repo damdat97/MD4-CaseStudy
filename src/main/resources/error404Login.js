@@ -1,7 +1,7 @@
 let error404Admin = document.getElementById('content')
 
 function showError404Admin() {
-    error404.innerHTML = `<div class="d-flex align-items-center justify-content-center vh-100">
+    error404Admin.innerHTML = `<div class="d-flex align-items-center justify-content-center vh-100">
             <div class="text-center">
                 <h1 class="display-1 fw-bold">ERROR</h1>
                 <p class="fs-3"> <span class="text-danger">Opps!</span> The company is running out of money!</p>
