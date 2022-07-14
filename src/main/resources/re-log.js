@@ -134,7 +134,7 @@ function showLoginForm() {
                 <p id="passLogin" style="color: red"></p>
             
             </div>
-                <p class="forgot"><a onclick="showError404()">Forgot Password?</a></p>
+                <p class="forgot"><a onclick="showError404Admin()">Forgot Password?</a></p>
                 <button onclick="login()" class="button button-block"/>Log In</button>
     </div>
 </div>`
