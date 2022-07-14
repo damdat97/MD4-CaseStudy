@@ -143,11 +143,11 @@ function loadUserList() {
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Tên</th>
-                                        <th>Loại tài khoản</th>
+                                        <th>Name</th>
+                                        <th>Permission</th>
                                         <th>Phone</th>
-                                        <th>Trang thai</th>
-                                        <th style="text-align: center">Tùy chọn</th>
+                                        <th>Status</th>
+                                        <th style="text-align: center">Option</th>
                                     </tr>
                                     </thead>
                                     <tbody>`
@@ -299,11 +299,11 @@ function findByName() {
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Tên</th>
-                                        <th>Loại tài khoản</th>
+                                        <th>Name</th>
+                                        <th>Permission</th>
                                         <th>Phone</th>
-                                        <th>Trang thai</th>
-                                        <th colspan="3" style="text-align: center">Tùy chọn</th>
+                                        <th>Status</th>
+                                        <th colspan="3" style="text-align: center">Option</th>
                                     </tr>
                                     </thead>     
                                     <tr>`
@@ -330,10 +330,10 @@ function findByName() {
                                             <td>`
 
                                     if (data[i].status === true) {
-                                        str += `<p class="badge badge-success">Đang mở</p>`
+                                        str += `<p class="badge badge-success">Connected</p>`
                                     }
                                     if (data[i].status === false) {
-                                        str += `<p class="badge badge-danger">Đang bị khóa</p>
+                                        str += `<p class="badge badge-danger">Locked</p>
                                                                 </td>`
                                     }
                                     str += `
@@ -429,7 +429,7 @@ function editUser(id) {
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
-                    <h3 class="page-title">Edit Function User <i class="fa-solid fa-pen-to-square" style="margin-left: 10px"></i></h3>
+                    <h3 class="page-title">Edit user information <i class="fa-solid fa-pen-to-square" style="margin-left: 10px"></i></h3>
                 </div>
                 <div class="row">
                     <div class="col-12 grid-margin">
@@ -444,7 +444,7 @@ function editUser(id) {
                     url: 'http://localhost:8081/admin/users/' + id,
                     success: function (data) {
                         console.log(data)
-                        str += `<p class="card-description"> Personal Information </p>
+                        str += `<p class="card-description"> Personal information </p>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group row">
@@ -488,7 +488,7 @@ function editUser(id) {
                                             <div class="form-group row">
                                             <input type="hidden" value="${data.status}" id="statusEdit">
                                             <input type="hidden" value="${data.confirmPassword}" id="confirmPasswordEdit">
-                                                <label class="col-sm-3 col-form-label">Role</label>
+                                                <label class="col-sm-3 col-form-label">Permission</label>
                                                 <div class="col-sm-9">
                                                     <select class="form-control" id="roleEdit">`
                                                 $.ajax({
@@ -520,7 +520,7 @@ function editUser(id) {
                 </div>
                 <footer class="footer">
                     <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2017 <a
+                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2022 <a
                             href="https://www.bootstrapdash.com/" target="_blank"></a>. All rights reserved.</span>
                         <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i
                                 class="icon-heart text-danger"></i></span>

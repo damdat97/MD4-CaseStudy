@@ -134,8 +134,8 @@ function showWomenProduct() {
                                         <div class="product-info"><b>Name: ${data[i].name}</b></div>
                                         <div class="product-price"><b>Price: ${data[i].price}</b></div>
                                         <div class="product-info"><b>Description: ${data[i].description}</b></div>
-                                        <div class="product-info"><b>Quantity ${data[i].quantity}</b></div>
-                                        <div class="product-info"><b>Category ${data[i].category.name}</b></div>
+                                        <div class="product-info"><b>Quantity: ${data[i].quantity}</b></div>
+                                        <div class="product-info"><b>Category: ${data[i].category.name}</b></div>
                                 </div>
                             </div>
                             </div>
@@ -149,11 +149,11 @@ function showWomenProduct() {
                                         <div>
                                             <img style="height: 240px; width: 200px" src="${data[i].img}" alt="">
                                         </div>
-                                        <div class="product-info"><b>Name: ${data[i].name}</b></div>
+                                        <div class="product-info"><b>NAme: ${data[i].name}</b></div>
                                         <div class="product-price"><b>Price: ${data[i].price}</b></div>
                                         <div class="product-info"><b>Description: ${data[i].description}</b></div>
-                                        <div class="product-info"><b>Quantity ${data[i].quantity}</b></div>
-                                        <div class="product-info"><b>Category ${data[i].category.name}</b></div>
+                                        <div class="product-info"><b>Quantity: ${data[i].quantity}</b></div>
+                                        <div class="product-info"><b>Category: ${data[i].category.name}</b></div>
                                 </div>
                                 <div class="btn-primary" style="text-align: center"><a onclick="addToCart(${data[i].id})"><b>Add to cart</b></a></div>
                             </div>
